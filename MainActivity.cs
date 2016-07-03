@@ -62,7 +62,7 @@ namespace DanfossFindAnalogs
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource 
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             AutoCompleteTextView textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
@@ -81,11 +81,12 @@ namespace DanfossFindAnalogs
                 tableLayout.LayoutParameters = new TableRow.LayoutParams(TableLayout.LayoutParams.MatchParent, TableLayout.LayoutParams.MatchParent);
 
                 var title = new TextView(this);
-                title.Text = "Java Weather Table";
+                title.Text = "Аналоги кода " + listView.Text;
                 title.SetBackgroundResource(Resource.Layout.cell);
                 title.Gravity = GravityFlags.Center;
                 title.SetPadding(25, 25, 25, 25);
                 title.SetTextColor(Color.Black);
+                title.SetBackgroundColor(Color.Aquamarine);
                 title.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                 var tableRow = new TableRow(this);
