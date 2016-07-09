@@ -28,6 +28,22 @@ namespace DanfossFindAnalogs
 		{
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int Codes = 2131034112;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -98,34 +114,18 @@ namespace DanfossFindAnalogs
 			}
 		}
 		
-		public partial class Raw
+		public partial class Xml
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int data = 2130968576;
+			public const int codes = 2130968576;
 			
-			static Raw()
+			static Xml()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private Raw()
-			{
-			}
-		}
-		
-		public partial class String
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
-			
-			static String()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private String()
+			private Xml()
 			{
 			}
 		}

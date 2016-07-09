@@ -57,7 +57,6 @@
     <None Include="GettingStarted.Xamarin" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\source\Таблица подбора Гуляев.xls" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -80,7 +79,7 @@
     <AndroidResource Include="Resources\layout\cell.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\source\data.xml" />
+    <AndroidResource Include="Resources\xml\codes.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
