@@ -10,6 +10,11 @@ using Android.Content.Res;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using Java.Util;
+using Java.Lang;
+using System.Collections;
+using Object = Java.Lang.Object;
+
 
 namespace DanfossFindAnalogs
 {
@@ -31,11 +36,12 @@ namespace DanfossFindAnalogs
             var xdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
             var codes = xdoc.Root.Elements("item").Select(x => x);
             var ids = codes.Select(x => x.Attribute("id").Value).ToList();
-            var adapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, ids);
 
+            //var adapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, ids);
+            var adapter2 = new ArrayExAdapter<string>(this, Resource.Layout.list_item, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
-            textView.Adapter = adapter;
+            textView.Adapter = adapter2;
             textView.Threshold = 1;
 
             textView.ItemClick += (sender, args) =>
@@ -103,7 +109,120 @@ namespace DanfossFindAnalogs
 
         }
 
-
     }
+
+    public class JavaObjectWrapper<T> : Java.Lang.Object
+    {
+        public T Obj { get; set; }
+    }
+
+
+    public class ArrayExAdapter<Object> : ArrayAdapter
+    {
+        
+        private List<string> _originalData;
+        private List<string> _items;
+        private readonly Activity _context;
+
+        public ArrayExAdapter(Activity context, int resource, List<string> objects) : base(context, resource, objects)
+        {
+            _context = context;
+            _items = objects;
+
+        }
+
+        MyFilter myfilter;
+
+        public override Filter Filter
+        {
+            get
+            {
+                if (myfilter == null)
+                {
+                    myfilter = new MyFilter(this);
+                }
+                return myfilter;
+            }
+        }
+
+
+        private class MyFilter : Filter
+        {
+            private readonly ArrayExAdapter<Object> adapter;
+
+            public MyFilter(ArrayExAdapter<Object> adapter)
+            {
+                this.adapter = adapter;
+            }
+
+            protected override Filter.FilterResults PerformFiltering(Java.Lang.ICharSequence constraint)
+            {
+                FilterResults results = new FilterResults();
+                if (adapter._originalData == null)
+                    adapter._originalData = adapter._items;
+
+                if (constraint == null) return results;
+                
+                var matchList = new List<Java.Lang.Object>();
+
+                if (adapter._originalData != null && adapter._originalData.Any())
+                {
+                    foreach (var txt in adapter._originalData)
+                    {
+                        if (txt.ToString().ToUpper().Contains(constraint.ToString().ToUpper()))
+                        {
+                            matchList.Add(txt);
+                        }
+                    }
+                }                               
+
+                var resultsValues = new Java.Lang.Object[matchList.Count];
+                for (int i = 0; i < matchList.Count; i++)
+                {
+                    resultsValues[i] = matchList[i];
+                }
+
+                results.Count = matchList.Count;
+                results.Values = resultsValues;
+
+                constraint.Dispose();
+
+                return results;
+
+            }
+
+
+            protected override void PublishResults(Java.Lang.ICharSequence constraint, Filter.FilterResults results)
+            {
+                if (results.Count == 0) return;
+
+                var list = results.Values.ToArray<Java.Lang.Object>();
+                if (list != null && list.Length > 0)
+                {
+                    adapter.Clear();
+                    foreach (var t in list)
+                    {
+                        adapter.Add(t);
+                    }
+                }
+                if (results.Count > 0)
+                {
+                    adapter.NotifyDataSetChanged();
+                }
+                else
+                {
+                    adapter.NotifyDataSetInvalidated();
+                }
+
+                constraint.Dispose();
+
+                results.Dispose();
+            }
+
+        }
+    }
+
+   
+
 }
 

@@ -81,6 +81,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\xml\codes.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\NetUtils.csproj">
+      <Project>{21ec99c5-7fe7-4903-8d6c-6f0a4f418803}</Project>
+      <Name>NetUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

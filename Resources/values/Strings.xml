@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="Codes">
-      <!--Shneider items-->
+    <!--<string-array name="Codes">
+      --><!--Shneider items--><!--
       <item brend="Shneider" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">ATV12H018M2</item>
       <item brend="Shneider" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">ATV12H037M2</item>
       <item brend="Shneider" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX">ATV12H055M2</item>
@@ -76,7 +76,7 @@
       <item brend="Shneider" custom="132F0030" model="FC-051P7K5T4E20H3BXCXXXSXXX">ATV32HU75N4</item>
       <item brend="Shneider" custom="132F0058" model="FC-051P11KT4E20H3BXCXXXSXXX">ATV32HD11N4</item>
 
-      <!--Vacon items-->
+      --><!--Vacon items--><!--
       <item brend="Vacon" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX">Vacon 0010-1L-0001-2</item>
       <item brend="Vacon" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">Vacon 0010-1L-0002-2</item>
       <item brend="Vacon" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">Vacon 0010-1L-0003-2</item>
@@ -111,7 +111,7 @@
       <item brend="Vacon" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX">NXL 0004 5 C 1 N 1</item>
       <item brend="Vacon" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX">NXL 0004 5 C 1 N 1</item>
 
-      <!--ABB items-->
+      --><!--ABB items--><!--
       <item brend="ABB" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">ACS150-01E-02A4-2</item>
       <item brend="ABB" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX">ACS150-01E-04A7-2</item>
       <item brend="ABB" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX">ACS150-01E-06A7-2</item>
@@ -326,7 +326,7 @@
       <item brend="ABB" custom="131L9905" model="FC-101P75KT4E20H2XXCXXXSXXXXAXBXCXXXXDX">ACH55001157A45</item>
       <item brend="ABB" custom="131L9913" model="FC-101P90KT4E20H2XXCXXXSXXXXAXBXCXXXXDX">ACH55001180A45</item>
 
-      <!--Omron items-->
+      --><!--Omron items--><!--
       <item brend="Omron" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX">3G3MX2-AB001-E</item>
       <item brend="Omron" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">3G3MX2-AB002-E</item>
       <item brend="Omron" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX">3G3MX2-AB004-E</item>
@@ -404,7 +404,7 @@
       <item brend="Omron" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX">JZA43P0BAA</item>
       <item brend="Omron" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX">JZA44P0BAA</item>
 
-      <!--Siemens items-->
+      --><!--Siemens items--><!--
       <item brend="Siemens" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX">6SL3210-5BE13-7UV0</item>
       <item brend="Siemens" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX">6SL3210-5BE15-5UV0</item>
       <item brend="Siemens" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX">6SL3210-5BE17-5UV0</item>
@@ -582,6 +582,6 @@
       <item brend="Siemens" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX">6SE6440-2UC21-5BA1</item>
       <item brend="Siemens" custom="132F0007" model="FC-051P2K2S2E20H3BXCXXXSXXX">6SE6440-2UC22-2BA1</item>
       <item brend="Siemens" custom="-" model="-">6SE6440-2UC23-0CA1</item>                          
-    </string-array>
+    </string-array>-->
   
 </resources>

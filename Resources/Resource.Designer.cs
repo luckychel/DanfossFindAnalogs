@@ -26,22 +26,8 @@ namespace DanfossFindAnalogs
 		
 		public static void UpdateIdValues()
 		{
-		}
-		
-		public partial class Array
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int Codes = 2131034112;
-			
-			static Array()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Array()
-			{
-			}
+			global::ClassLibrary1.Resource.String.ApplicationName = global::DanfossFindAnalogs.Resource.String.ApplicationName;
+			global::ClassLibrary1.Resource.String.Hello = global::DanfossFindAnalogs.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -110,6 +96,25 @@ namespace DanfossFindAnalogs
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class String
+		{
+			
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
+			
+			static String()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private String()
 			{
 			}
 		}
