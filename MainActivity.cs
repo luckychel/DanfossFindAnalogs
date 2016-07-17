@@ -1,29 +1,40 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-using Android.Graphics;
+using Android.Content.PM;
 using Android.Content.Res;
-using System.Xml.Linq;
+using Android.Graphics;
+using Android.OS;
+using Android.Runtime;
+using Android.Text;
+using Android.Views;
+using Android.Views.InputMethods;
+using Android.Widget;
+using Java.Lang;
+using Java.Util;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Java.Util;
-using Java.Lang;
-using System.Collections;
+using System.Xml.Linq;
 using Object = Java.Lang.Object;
-
 
 namespace DanfossFindAnalogs
 {
-    
 
-    [Activity(MainLauncher = true)]
+    
+    [Activity
+        (
+            MainLauncher = true
+            , Label = "Поиск аналогов кодов Данфосс"
+            , Theme = "@android:style/Theme.Material.Light"
+            , Icon = "@drawable/Icon"
+            , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
+        )
+    ]
     public class MainActivity : Activity
     {
 
+        private XDocument хdoc;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -33,15 +44,15 @@ namespace DanfossFindAnalogs
 
             AutoCompleteTextView textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
 
-            var xdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
-            var codes = xdoc.Root.Elements("item").Select(x => x);
+            хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
+            var codes = хdoc.Root.Elements("item").Select(x => x);
+
             var ids = codes.Select(x => x.Attribute("id").Value).ToList();
 
-            //var adapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, ids);
-            var adapter2 = new ArrayExAdapter<string>(this, Resource.Layout.list_item, ids);
+            var adapter = new ArrayExAdapter<string>(this, Resource.Layout.list_item, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
-            textView.Adapter = adapter2;
+            textView.Adapter = adapter;
             textView.Threshold = 1;
 
             textView.ItemClick += (sender, args) =>
@@ -55,9 +66,14 @@ namespace DanfossFindAnalogs
                 tableLayout.LayoutParameters = new TableRow.LayoutParams(TableLayout.LayoutParams.MatchParent, TableLayout.LayoutParams.MatchParent);
 
                 var title = new TextView(this);
+                
+                if (хdoc == null)
+                    хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
 
-                var хdoc2 = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
-                var item = хdoc2.Root.Elements("item").Where(x => (string)x.Attribute("id") == itemView.Text).FirstOrDefault();
+                var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("id") == itemView.Text).FirstOrDefault();
+
+                //var ss = new Java.Lang.String("Hello");
+                //ICharSequence derp = new Java.Lang.String("Hello");
 
                 if (item != null)
                 {
@@ -102,14 +118,69 @@ namespace DanfossFindAnalogs
 
                         tableLayout.AddView(tableRow);
                     }
+
+                    InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
+                    var currentFocus = this.CurrentFocus;
+                    if (currentFocus != null)
+                    {
+                        inputManager.HideSoftInputFromWindow(currentFocus.WindowToken, HideSoftInputFlags.None);
+                    }
                 }
 
 
             };
 
+            textView.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
+ 
+        }
+
+
+        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
+        {
+
+            base.OnConfigurationChanged(newConfig);
+            //Toast.MakeText(this, "called OnConfigurationChanged", ToastLength.Long).Show();
+
+            if (newConfig.Orientation == Android.Content.Res.Orientation.Landscape)
+            {
+                Toast.MakeText(this, "landscape", ToastLength.Long).Show();
+            }
+            else
+            {
+                Toast.MakeText(this, "portrait", ToastLength.Long).Show();
+            }
         }
 
     }
+
+    public class MyTextWatcher : Java.Lang.Object, ITextWatcher
+    {
+
+        private Context myContext;
+        public MyTextWatcher(Context ctx) {
+            myContext = ctx;
+        }
+
+        public void AfterTextChanged(IEditable s) {
+            //var ss = s.Where(x => x.ToString() != "\n").ToArray();
+            //s = new Java.Lang.String(ss);
+        }
+        public void BeforeTextChanged(Java.Lang.ICharSequence arg0, int start, int count, int after) {
+
+            //var ss = arg0.Where(x => x.ToString() != "\n").ToArray();
+            //arg0 = new Java.Lang.String(ss);
+
+        }
+        public void OnTextChanged(Java.Lang.ICharSequence arg0, int start, int before, int count) {
+
+            //var ss = arg0.Where(x => x.ToString() != "\n").ToArray();
+            //arg0 = new Java.Lang.String(ss);
+
+        }
+    }
+
+
+   
 
     public class JavaObjectWrapper<T> : Java.Lang.Object
     {
@@ -171,6 +242,13 @@ namespace DanfossFindAnalogs
                     {
                         if (txt.ToString().ToUpper().Contains(constraint.ToString().ToUpper()))
                         {
+                            //выходим когда кол-во совпадений больше 50
+                            if (matchList.Count == 50)
+                            {
+                                matchList.Add("Результат ограничен до 50 совпадений...");
+                                break;
+                            }
+
                             matchList.Add(txt);
                         }
                     }

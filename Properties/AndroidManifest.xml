@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="DanfossFindAnalogs.DanfossFindAnalogs" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
-	<application android:label="Поиск аналогов кодов Данфосс" android:theme="@android:style/Theme.Material.Light" android:icon="@drawable/Icon" android:debuggable="true"></application>
+	<application android:debuggable="true">
+  </application>
 </manifest>
