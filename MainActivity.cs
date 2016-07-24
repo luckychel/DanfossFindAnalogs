@@ -21,7 +21,7 @@ using Object = Java.Lang.Object;
 namespace DanfossFindAnalogs
 {
 
-    
+
     [Activity
         (
             MainLauncher = true
@@ -36,6 +36,9 @@ namespace DanfossFindAnalogs
     {
         
         private XDocument хdoc;
+        private TextView txtView;
+      
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -66,15 +69,15 @@ namespace DanfossFindAnalogs
             autocomplete.SetHintTextColor(Color.Red);
             autocomplete.Adapter = adapter;
             autocomplete.Threshold = 1;
+            //autocomplete.((ProgressBar)findViewById(R.id.progress_bar));
             autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
             autocomplete.ItemClick += (sender, args) =>
             {
                 var itemView = sender as TextView;
 
-                if (itemView.Text == "Больше 50 совпадений...")
+                if (itemView.Text == limitRows.limValueText)
                 {
                     autocomplete.SetText("", TextView.BufferType.Normal);
-                    textView2.SetText("", TextView.BufferType.Normal);
                     return;
                 }
 
@@ -84,16 +87,17 @@ namespace DanfossFindAnalogs
                     хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
 
                 var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("id") == itemView.Text).FirstOrDefault();
+                var brend = item.FirstAttribute.Value;
 
-                textView2.SetText("Бренд: " + item.Attribute("brend").Value, TextView.BufferType.Normal);
+                textView2.SetText("Бренд: " + brend, TextView.BufferType.Normal);
 
                 var tableLayout = FindViewById<TableLayout>(Resource.Id.results1);
                 tableLayout.RemoveAllViewsInLayout();
+                tableLayout.RemoveAllViews();
+
                 TableLayout.LayoutParams par = new TableLayout.LayoutParams(TableLayout.LayoutParams.WrapContent, TableLayout.LayoutParams.MatchParent);
                 par.SetMargins(20, 0, 20, 0);
                 tableLayout.LayoutParameters = par;
-
-                var txtView = new TextView(this);
 
                 if (item != null)
                 {
@@ -101,40 +105,102 @@ namespace DanfossFindAnalogs
                             item.Attribute("custom").Value,
                             item.Attribute("model").Value
                         };
+                    
+                    var isVacon = (brend == "Vacon" ? true : false);
 
-                    txtView.Text = "Аналог " + (codeData[0] == "Vacon" ? codeData[0] : "Данфосс");
+                    txtView = new TextView(this);
+                    txtView.Text = "Аналог " + (isVacon ? brend : "Данфосс");
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
-                    txtView.SetTextColor(Color.Black);
+                    txtView.SetTextColor(Color.Blue);
                     txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
                     txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                     var tableRow = new TableRow(this);
-                    tableRow.AddView(txtView, new TableRow.LayoutParams() { Span = 2 });
+                    tableRow.AddView(txtView);
                     tableLayout.AddView(tableRow);
 
-                    for (int i = 0; i < 1; i++)
+                    for (int i = 0; i < codeData.Count; i++)
                     {
+                        
+                        txtView = new TextView(this);
+                        txtView.TextFormatted = Html.FromHtml("<b>" + (i == 0 ? "Заказной код:  " : "Типовой код:  ") + "</b>" + codeData[i]);
+                        txtView.SetBackgroundResource(Resource.Layout.finded);
+                        txtView.Gravity = GravityFlags.Left ;
+                        txtView.SetPadding(25, 25, 25, 25);
+                        txtView.SetTextColor(Color.Black);
+                        txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
 
                         tableRow = new TableRow(this);
                         tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
-
-                        for (int j = 0; j < codeData.Count; j++)
-                        {
-
-                            txtView = new TextView(this);
-                            txtView.Text = codeData[j];
-                            txtView.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.MatchParent, TableRow.LayoutParams.WrapContent);
-                            txtView.SetBackgroundResource(Resource.Layout.cell);
-                            txtView.Gravity = GravityFlags.CenterHorizontal;
-                            txtView.SetPadding(25, 25, 25, 25);
-                            txtView.SetTextColor(Color.Black);
-                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-                            tableRow.AddView(txtView, j);
-                        }
+                        tableRow.AddView(txtView);
 
                         tableLayout.AddView(tableRow);
                     }
+
+                    if (!isVacon)
+                    {
+                        var items = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("brend") == "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value).ToList();
+
+                        if (items != null && items.Count > 0)
+                        {
+                            txtView = new TextView(this);
+                            txtView.Text = "Аналог Vacon";
+                            txtView.Gravity = GravityFlags.Left;
+                            txtView.SetPadding(25, 50, 25, 25);
+                            txtView.SetTextColor(Color.Blue);
+                            txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
+                            txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
+
+                            tableRow = new TableRow(this);
+                            tableRow.AddView(txtView);
+
+                            tableLayout.AddView(tableRow);
+                        }
+
+                        foreach (var it in items)
+                        {
+
+                            codeData = new List<string>() {
+                                it.Attribute("id").Value,
+                                it.Attribute("custom").Value,
+                                it.Attribute("model").Value
+                            };
+
+                            for (int i = 0; i < codeData.Count; i++)
+                            {
+                              
+                                txtView = new TextView(this);
+                                txtView.TextFormatted = Html.FromHtml("<b>" + (i == 0 ? "Типовой код:  " : (i == 1 ? "Заказной код MicroDrive:  " : "Типовой код MicroDrive:  ")) + "</b>" + codeData[i]);
+                                txtView.SetBackgroundResource(Resource.Layout.finded);
+                                txtView.Gravity = GravityFlags.Left;
+                                txtView.SetPadding(25, 25, 25, 25);
+                                txtView.SetTextColor(Color.Black);
+                                //txtView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);
+
+                                tableRow = new TableRow(this);
+                                tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                                tableRow.AddView(txtView);
+
+                                tableLayout.AddView(tableRow);
+                            }
+
+                            txtView = new TextView(this);
+                            txtView.Text = "";
+                            txtView.Gravity = GravityFlags.Left;
+                            txtView.SetPadding(25, 25, 25, 25);
+                            txtView.SetTextColor(Color.Black);
+                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+
+                            tableRow = new TableRow(this);
+                            tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                            tableRow.AddView(txtView);
+
+                            tableLayout.AddView(tableRow);
+                        }
+
+                    }
+
 
                     hideKeyBoard();
                 }
@@ -269,10 +335,10 @@ namespace DanfossFindAnalogs
                     {
                         if (txt.ToString().ToUpper().Contains(constraint.ToString().ToUpper()))
                         {
-                            //выходим когда кол-во совпадений больше 50
-                            if (matchList.Count == 50)
+                            //выходим когда кол-во совпадений больше заданного ограничения
+                            if (matchList.Count == limitRows.limValue)
                             {
-                                matchList.Add("Больше 50 совпадений...");
+                                matchList.Add(limitRows.limValueText);
                                 break;
                             }
 
@@ -327,7 +393,13 @@ namespace DanfossFindAnalogs
         }
     }
 
-   
+    public static class limitRows
+    {
+        public static int limValue { get { return 20; } }
+
+        public static string limValueText { get { return "Больше " + limValue.ToString() + " совпадений..."; } }
+    }
+
 
 }
 
