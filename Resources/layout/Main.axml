@@ -2,20 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/LL">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Введите известный Вам код"
+        android:textStyle="bold"
         android:textSize="70px"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/black"
+        android:id="@+id/textView1" />
     <AutoCompleteTextView
         android:id="@+id/autocomplete_codes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" />
+        android:textSize="70px"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:background="@layout/find"
+        android:textCursorDrawable="@drawable/@android:color/black" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="50px"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/textView2" />
     <TableLayout
-        android:id="@+id/results"
+        android:id="@+id/results1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:shrinkColumns="*"

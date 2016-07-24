@@ -25,112 +25,124 @@ namespace DanfossFindAnalogs
     [Activity
         (
             MainLauncher = true
-            , Label = "Поиск аналогов кодов Данфосс"
-            , Theme = "@android:style/Theme.Material.Light"
+            , Label = "Аналоги Данфосс кодов"
+            , Theme = "@style/MyCustomTheme"
             , Icon = "@drawable/Icon"
             , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
+            
         )
     ]
     public class MainActivity : Activity
     {
-
+        
         private XDocument хdoc;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+            ActionBar actionBar = ActionBar;
+            actionBar.Title = "";
+            actionBar.SetDisplayHomeAsUpEnabled(false);
+            actionBar.SetDisplayShowCustomEnabled(true);
+            actionBar.SetCustomView(Resource.Layout.actionBar);
+            actionBar.NavigationMode = ActionBarNavigationMode.Standard;
+            Toolbar parent = (Toolbar)actionBar.CustomView.Parent;
+            parent.SetContentInsetsAbsolute(0, 0);
+
             SetContentView(Resource.Layout.Main);
 
-            AutoCompleteTextView textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
+            LinearLayout ll = FindViewById<LinearLayout>(Resource.Id.LL);
+            ll.SetBackgroundColor(Color.ParseColor("#f0f0f0"));
 
+            TextView textView2 = FindViewById<TextView>(Resource.Id.textView2);
+           
             хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
             var codes = хdoc.Root.Elements("item").Select(x => x);
-
             var ids = codes.Select(x => x.Attribute("id").Value).ToList();
-
-            var adapter = new ArrayExAdapter<string>(this, Resource.Layout.list_item, ids);
+            var adapter = new ArrayExAdapter<string>(this, Resource.Layout.listItem, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
-            textView.Adapter = adapter;
-            textView.Threshold = 1;
-
-            textView.ItemClick += (sender, args) =>
+            AutoCompleteTextView autocomplete = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
+            autocomplete.SetHintTextColor(Color.Red);
+            autocomplete.Adapter = adapter;
+            autocomplete.Threshold = 1;
+            autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
+            autocomplete.ItemClick += (sender, args) =>
             {
                 var itemView = sender as TextView;
-                
-                Toast.MakeText(this, itemView.Text, ToastLength.Short).Show();
 
-                var tableLayout = FindViewById<TableLayout>(Resource.Id.results);
-                tableLayout.RemoveAllViewsInLayout();
-                tableLayout.LayoutParameters = new TableRow.LayoutParams(TableLayout.LayoutParams.MatchParent, TableLayout.LayoutParams.MatchParent);
+                if (itemView.Text == "Больше 50 совпадений...")
+                {
+                    autocomplete.SetText("", TextView.BufferType.Normal);
+                    textView2.SetText("", TextView.BufferType.Normal);
+                    return;
+                }
 
-                var title = new TextView(this);
-                
+                //Toast.MakeText(this, itemView.Text, ToastLength.Short).Show();
+
                 if (хdoc == null)
                     хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
 
                 var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("id") == itemView.Text).FirstOrDefault();
 
-                //var ss = new Java.Lang.String("Hello");
-                //ICharSequence derp = new Java.Lang.String("Hello");
+                textView2.SetText("Бренд: " + item.Attribute("brend").Value, TextView.BufferType.Normal);
+
+                var tableLayout = FindViewById<TableLayout>(Resource.Id.results1);
+                tableLayout.RemoveAllViewsInLayout();
+                TableLayout.LayoutParams par = new TableLayout.LayoutParams(TableLayout.LayoutParams.WrapContent, TableLayout.LayoutParams.MatchParent);
+                par.SetMargins(20, 0, 20, 0);
+                tableLayout.LayoutParameters = par;
+
+                var txtView = new TextView(this);
 
                 if (item != null)
                 {
                     var codeData = new List<string>() {
-                        item.Attribute("brend").Value,
-                        item.Attribute("custom").Value,
-                        item.Attribute("model").Value
-                    };
+                            item.Attribute("custom").Value,
+                            item.Attribute("model").Value
+                        };
 
-                    title.Text = "Аналог " + (codeData[0] == "Vacon" ? codeData[0] : "Данфосс");
-                    title.SetBackgroundResource(Resource.Layout.cell);
-                    title.Gravity = GravityFlags.Center;
-                    title.SetPadding(25, 25, 25, 25);
-                    title.SetTextColor(Color.White);
-                    title.SetBackgroundColor(Color.Red);
-                    title.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
+                    txtView.Text = "Аналог " + (codeData[0] == "Vacon" ? codeData[0] : "Данфосс");
+                    txtView.Gravity = GravityFlags.Left;
+                    txtView.SetPadding(25, 25, 25, 25);
+                    txtView.SetTextColor(Color.Black);
+                    txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
+                    txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                     var tableRow = new TableRow(this);
-                    tableRow.AddView(title, new TableRow.LayoutParams() { Span = 3 });
+                    tableRow.AddView(txtView, new TableRow.LayoutParams() { Span = 2 });
                     tableLayout.AddView(tableRow);
 
                     for (int i = 0; i < 1; i++)
                     {
 
                         tableRow = new TableRow(this);
-                        tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent,
-                                TableRow.LayoutParams.MatchParent);
+                        tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
 
                         for (int j = 0; j < codeData.Count; j++)
                         {
 
-                            TextView b = new TextView(this);
-                            b.Text = codeData[j];
-                            b.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.MatchParent, TableRow.LayoutParams.WrapContent);
-                            b.SetBackgroundResource(Resource.Layout.cell);
-                            b.Gravity = GravityFlags.CenterHorizontal;
-                            b.SetPadding(25, 25, 25, 25);
-                            b.SetTextColor(Color.Black);
-                            b.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-                            tableRow.AddView(b, j);
+                            txtView = new TextView(this);
+                            txtView.Text = codeData[j];
+                            txtView.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.MatchParent, TableRow.LayoutParams.WrapContent);
+                            txtView.SetBackgroundResource(Resource.Layout.cell);
+                            txtView.Gravity = GravityFlags.CenterHorizontal;
+                            txtView.SetPadding(25, 25, 25, 25);
+                            txtView.SetTextColor(Color.Black);
+                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                            tableRow.AddView(txtView, j);
                         }
 
                         tableLayout.AddView(tableRow);
                     }
 
-                    InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
-                    var currentFocus = this.CurrentFocus;
-                    if (currentFocus != null)
-                    {
-                        inputManager.HideSoftInputFromWindow(currentFocus.WindowToken, HideSoftInputFlags.None);
-                    }
+                    hideKeyBoard();
                 }
 
 
             };
 
-            textView.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
+            
  
         }
 
@@ -139,19 +151,34 @@ namespace DanfossFindAnalogs
         {
 
             base.OnConfigurationChanged(newConfig);
+
+            hideKeyBoard();
+
             //Toast.MakeText(this, "called OnConfigurationChanged", ToastLength.Long).Show();
 
-            if (newConfig.Orientation == Android.Content.Res.Orientation.Landscape)
-            {
-                Toast.MakeText(this, "landscape", ToastLength.Long).Show();
-            }
-            else
-            {
-                Toast.MakeText(this, "portrait", ToastLength.Long).Show();
-            }
+            //if (newConfig.Orientation == Android.Content.Res.Orientation.Landscape)
+            //{
+            //    Toast.MakeText(this, "landscape", ToastLength.Long).Show();
+            //}
+            //else
+            //{
+            //    Toast.MakeText(this, "portrait", ToastLength.Long).Show();
+            //}
         }
 
+
+        private void hideKeyBoard()
+        {
+            InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
+            var currentFocus = this.CurrentFocus;
+            if (currentFocus != null)
+            {
+                inputManager.HideSoftInputFromWindow(currentFocus.WindowToken, HideSoftInputFlags.None);
+            }
+        }
     }
+
+
 
     public class MyTextWatcher : Java.Lang.Object, ITextWatcher
     {
@@ -245,7 +272,7 @@ namespace DanfossFindAnalogs
                             //выходим когда кол-во совпадений больше 50
                             if (matchList.Count == 50)
                             {
-                                matchList.Add("Результат ограничен до 50 совпадений...");
+                                matchList.Add("Больше 50 совпадений...");
                                 break;
                             }
 
