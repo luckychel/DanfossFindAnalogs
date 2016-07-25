@@ -34,8 +34,7 @@ namespace DanfossFindAnalogs
         {
             public override void HandleMessage(Message msg)
             {
-                //DelayAutoCompleteTextView d = new DelayAutoCompleteTextView(_Context, _Attrs);
-                //d.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
+                //DelayAutoCompleteTextView.base.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
             }
         }
 
@@ -55,7 +54,7 @@ namespace DanfossFindAnalogs
             {
                 mLoadingIndicator.Visibility = ViewStates.Visible;
             }
-           
+
             //mHandler.removeMessages(MESSAGE_TEXT_CHANGED);
             //mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), mAutoCompleteDelay);
         }

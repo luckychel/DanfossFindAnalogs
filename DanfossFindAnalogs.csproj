@@ -107,6 +107,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\background.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable\mipmap-hdpi\ic_launcher.png" />
+    <Content Include="Resources\drawable\mipmap-mdpi\ic_launcher.png" />
+    <Content Include="Resources\drawable\mipmap-xhdpi\ic_launcher.png" />
+    <Content Include="Resources\drawable\mipmap-xxhdpi\ic_launcher.png" />
+    <Content Include="Resources\drawable\mipmap-xxxhdpi\ic_launcher.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

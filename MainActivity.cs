@@ -112,10 +112,10 @@ namespace DanfossFindAnalogs
                     txtView.Text = "Аналог " + (isVacon ? brend : "Данфосс");
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
-                    txtView.SetTextColor(Color.Blue);
+                    txtView.SetTextColor(Color.Black);
                     txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
                     txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
-
+                    
                     var tableRow = new TableRow(this);
                     tableRow.AddView(txtView);
                     tableLayout.AddView(tableRow);
@@ -148,7 +148,7 @@ namespace DanfossFindAnalogs
                             txtView.Text = "Аналог Vacon";
                             txtView.Gravity = GravityFlags.Left;
                             txtView.SetPadding(25, 50, 25, 25);
-                            txtView.SetTextColor(Color.Blue);
+                            txtView.SetTextColor(Color.Black);
                             txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
                             txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
