@@ -1,22 +1,15 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Content.PM;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.OS;
-using Android.Runtime;
 using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
-using Java.Lang;
-using Java.Util;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using Object = Java.Lang.Object;
 
 namespace DanfossFindAnalogs
 {
@@ -25,7 +18,7 @@ namespace DanfossFindAnalogs
     [Activity
         (
             MainLauncher = true
-            , Label = "Аналоги Данфосс кодов"
+            , Label = "Данфосс VLT аналоги"
             , Theme = "@style/MyCustomTheme"
             , Icon = "@drawable/Icon"
             , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
