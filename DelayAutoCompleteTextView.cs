@@ -13,10 +13,10 @@ using Android.Widget;
 namespace DanfossFindAnalogs
 {
 
-    public class DelayAutoCompleteTextView : AutoCompleteTextView
+    public class DelayAutoCompleteTextView : AutoCompleteTextView 
     {
-        public static Context _Context {get; set;}
-        private static Android.Util.IAttributeSet _Attrs { get; set; }
+        public Context _Context {get; set;}
+        private Android.Util.IAttributeSet _Attrs { get; set; }
 
         public DelayAutoCompleteTextView(Context context, Android.Util.IAttributeSet attrs) : base(context, attrs)
         {
@@ -24,46 +24,44 @@ namespace DanfossFindAnalogs
             _Attrs = attrs;
         }
 
-        private static int MESSAGE_TEXT_CHANGED = 100;
-        private static int DEFAULT_AUTOCOMPLETE_DELAY = 750;
+        private static int messageTextChanged = 100;
+        private static int defaultAutocompleteDelay = 750;
 
-        private int mAutoCompleteDelay = DEFAULT_AUTOCOMPLETE_DELAY;
-        private ProgressBar mLoadingIndicator;
+        private int _autoCompleteDelay = defaultAutocompleteDelay;
+        private ProgressBar _loadingIndicator;
 
-        public class mHandler : Handler
-        {
-            public override void HandleMessage(Message msg)
-            {
-                //DelayAutoCompleteTextView.base.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
-            }
-        }
+        private readonly Handler mHandler = new Handler(delegate (Message msg) {
+            
+            //base.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
+
+        });
 
         public void setLoadingIndicator(ProgressBar progressBar)
         {
-            mLoadingIndicator = progressBar;
+            _loadingIndicator = progressBar;
         }
 
         public void setAutoCompleteDelay(int autoCompleteDelay)
         {
-            mAutoCompleteDelay = autoCompleteDelay;
+            _autoCompleteDelay = autoCompleteDelay;
         }
-
+        
         protected override void PerformFiltering(Java.Lang.ICharSequence text, int keyCode)
         {
-            if (mLoadingIndicator != null)
+            if (_loadingIndicator != null)
             {
-                mLoadingIndicator.Visibility = ViewStates.Visible;
+                _loadingIndicator.Visibility = ViewStates.Visible;
             }
-
-            //mHandler.removeMessages(MESSAGE_TEXT_CHANGED);
-            //mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), mAutoCompleteDelay);
+            
+            mHandler.RemoveMessages(messageTextChanged);
+            mHandler.SendMessageDelayed(mHandler.ObtainMessage(messageTextChanged, (Java.Lang.Object)text), _autoCompleteDelay);
         }
 
         public override void OnFilterComplete(int count)
         {
-            if (mLoadingIndicator != null)
+            if (_loadingIndicator != null)
             {
-                mLoadingIndicator.Visibility = ViewStates.Gone;
+                _loadingIndicator.Visibility = ViewStates.Gone;
             }
 
             base.OnFilterComplete(count);
