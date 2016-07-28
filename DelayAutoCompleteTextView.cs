@@ -23,11 +23,9 @@ namespace DanfossFindAnalogs
         private int _autoCompleteDelay = defaultAutocompleteDelay;
         private ProgressBar _loadingIndicator;
 
-        private readonly Handler mHandler = new Handler(delegate (Message msg) {
-            
-            //base.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
-
-        });
+        private void OnHandlerMessage(Message msg) {
+            base.PerformFiltering((Java.Lang.ICharSequence)msg.Obj, msg.Arg1);
+        }
 
         public void setLoadingIndicator(ProgressBar progressBar)
         {
@@ -45,7 +43,8 @@ namespace DanfossFindAnalogs
             {
                 _loadingIndicator.Visibility = ViewStates.Visible;
             }
-            
+
+            var mHandler = new Handler(OnHandlerMessage);
             mHandler.RemoveMessages(messageTextChanged);
             mHandler.SendMessageDelayed(mHandler.ObtainMessage(messageTextChanged, (Java.Lang.Object)text), _autoCompleteDelay);
         }
