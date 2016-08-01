@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="0px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <TextView
+            android:text="Данное приложение позволяет подбирать аналогичные по функционалу конкурентам преобразователи  частоты Danfoss марок VLT и VACON. Подобрать аналоги можно для следующих брендов: ABB, Siemens, Schneider Electric, Mitsubishi Electric, Delta Electronics, Omron и Веспер. Для подбора необходимо ввести в строку поиска заказной или типовой код преобразователя частоты указанных брендов. После ввода кода вам на выбор будут предложены аналогичные преобразователи частоты VLT или VACON"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="0dp"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="0px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:text="Закрыть"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnHelpClose" />
+    </LinearLayout>
+</LinearLayout>

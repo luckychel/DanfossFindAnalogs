@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="danfoss.com.ru.VLT.analogs.finder123" android:versionCode="2" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="danfoss.com.ru.competitor.tool" android:versionCode="2" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="23" />
-	<application android:debuggable="true" android:label="Danfoss VLT analogs finder" android:icon="@drawable/Icon"></application>
+	<application android:debuggable="true" android:icon="@drawable/Icon" android:label="Competitor Tool"></application>
 </manifest>

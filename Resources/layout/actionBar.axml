@@ -31,5 +31,15 @@
         android:id="@+id/linearLayout2"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:background="@layout/logoBackground" />
+        android:background="@layout/logoBackground">
+        <ImageView
+            android:src="@drawable/Help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
 </LinearLayout>

@@ -11,14 +11,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace DanfossFindAnalogs
+namespace CompetitorTool
 {
 
 
     [Activity
         (
             MainLauncher = true
-            , Label = "Данфосс VLT аналоги"
+            , Label = "Competitor Tool"
             , Theme = "@style/MyCustomTheme"
             , Icon = "@drawable/Icon"
             , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
@@ -66,6 +66,7 @@ namespace DanfossFindAnalogs
             autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
             autocomplete.ItemClick += (sender, args) =>
             {
+               
                 var itemView = sender as TextView;
 
                 if (itemView.Text == limitRows.limValueText)
@@ -201,8 +202,26 @@ namespace DanfossFindAnalogs
 
             };
 
+
+            var imageHelp = FindViewById<ImageView>(Resource.Id.imageView2);
             
- 
+            imageHelp.Click += (sender, args) =>
+            {
+                FragmentTransaction ft = FragmentManager.BeginTransaction();
+                //Remove fragment else it will crash as it is already added to backstack
+                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
+                if (prev != null)
+                {
+                    ft.Remove(prev);
+                }
+                ft.AddToBackStack(null);
+                // Create and show the dialog.
+                DialogFragment1 newFragment = DialogFragment1.NewInstance(null);
+                //No title
+                newFragment.SetStyle(DialogFragmentStyle.NoTitle, 0);
+                //Add fragment
+                newFragment.Show(ft, "dialog");
+            };
         }
 
 
