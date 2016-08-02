@@ -167,104 +167,104 @@
 
   
   <!--Vacon items-->
-    <item brend="Vacon" order="-" type="Vacon 0010-1L-0001-2" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0263" type="Vacon 0010-1L-0002-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0264" type="Vacon 0010-1L-0003-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0265" type="Vacon 0010-1L-0004-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0266" type="Vacon 0010-1L-0005-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0267" type="Vacon 0010-1L-0007-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="Vacon 0010-1L-0011-2" custom="132F0007" model="FC-051P2K2S2E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0269" type="Vacon 0010-3L-0001-4" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0270" type="Vacon 0010-3L-0002-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0271" type="VACON0010-3L-0003-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0272" type="VACON0010-3L-0004-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0273" type="VACON0010-3L-0005-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0274" type="VACON0010-3L-0006-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0275" type="VACON0010-3L-0008-4" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0276" type="Vacon 0010-3L-0009-4" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0277" type="VACON0010-3L-0012-4" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0011" type="NXL00035C2H1" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0012" type="NXL00045C2H1" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0013" type="NXL00055C2H1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0014" type="NXL00075C2H1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0015" type="NXL00095C2H1" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0016" type="NXL00125C2H1" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0017" type="NXL00165C2H1" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0018" type="NXL00235C2H1" custom="132F0030" model="FC-051P7K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0019" type="NXL00315C2H1" custom="132F0058" model="FC-051P11KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0021" type="NXL00385C2H1" custom="132F0059" model="FC-051P15KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0022" type="NXL00465C2H1" custom="132F0060" model="FC-051P18KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0023" type="NXL00615C2H1" custom="132F0061" model="FC-051P22KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="NXL00015C1N0" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="NXL00025C1N0" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="NXL00035C1N1" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="NXL00045C1N1" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="-" type="NXL00045C1N1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3575" type="VACON0020-3L-0001-4" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3576" type="VACON0020-3L-0002-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3577" type="VACON0020-3L-0003-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3578" type="VACON0020-3L-0004-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3579" type="VACON0020-3L-0005-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3580" type="VACON0020-3L-0006-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3581" type="VACON0020-3L-0008-4" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0604" type="VACON0020-3L-0009-4" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X2443" type="VACON0020-3L-0012-4" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0278" type="VACON0020-3L-0016-4" custom="132F0030" model="FC-051P7K5T4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0279" type="VACON0020-3L-0023-4" custom="132F0058" model="FC-051P11KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0280" type="VACON0020-3L-0031-4" custom="132F0059" model="FC-051P15KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0281" type="VACON0020-3L-0038-4" custom="132F0060" model="FC-051P18KT4E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3568" type="VACON0020-1L-0001-2" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3569" type="VACON0020-1L-0002-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3570" type="VACON0020-1L-0003-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3571" type="VACON0020-1L-0004-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3572" type="VACON0020-1L-0005-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3573" type="VACON0020-1L-0007-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X3574" type="VACON0020-1L-0009-2" custom="132F0007" model="FC-051P2K2S2E20H3BXCXXXSXXX" series="VLT Micro Drive FC 51" />
-    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9861" model="FC-101PK37T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9862" model="FC-101PK75T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9863" model="FC-101P1K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0180" type="VACON0100-3L-0005-5-FLOW" custom="131L9864" model="FC-101P2K2T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0181" type="VACON0100-3L-0008-5-FLOW" custom="131L9865" model="FC-101P3K0T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0182" type="VACON0100-3L-0009-5-FLOW" custom="131L9866" model="FC-101P4K0T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0183" type="VACON0100-3L-0012-5-FLOW" custom="131L9867" model="FC-101P5K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0184" type="VACON0100-3L-0016-5-FLOW" custom="131L9868" model="FC-101P7K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0185" type="VACON0100-3L-0023-5-FLOW" custom="131L9869" model="FC-101P11KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0186" type="VACON0100-3L-0031-5-FLOW" custom="131L9870" model="FC-101P15KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0187" type="VACON0100-3L-0038-5-FLOW" custom="131L9871" model="FC-101P18KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0188" type="VACON0100-3L-0046-5-FLOW" custom="131L9872" model="FC-101P22KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0189" type="VACON0100-3L-0061-5-FLOW" custom="131L9873" model="FC-101P30KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0190" type="VACON0100-3L-0072-5-FLOW" custom="131L9881" model="FC-101P37KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0191" type="VACON0100-3L-0087-5-FLOW" custom="131L9889" model="FC-101P45KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0192" type="VACON0100-3L-0105-5-FLOW" custom="131L9897" model="FC-101P55KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0193" type="VACON0100-3L-0140-5-FLOW" custom="131L9905" model="FC-101P75KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0194" type="VACON0100-3L-0170-5-FLOW" custom="131L9913" model="FC-101P90KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3375" type="VACON0100-3L-0003-5-FLOW+IP54" custom="131N0177" model="FC-101PK75T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X2914" type="VACON0100-3L-0004-5-FLOW+IP54" custom="131N0179" model="FC-101P1K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0592" type="VACON0100-3L-0005-5-FLOW+IP54" custom="131N0181" model="FC-101P2K2T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3377" type="VACON0100-3L-0008-5-FLOW+IP54" custom="131N0183" model="FC-101P3K0T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3378" type="VACON0100-3L-0009-5-FLOW+IP54" custom="131N0185" model="FC-101P4K0T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0594" type="VACON0100-3L-0012-5-FLOW+IP54" custom="131N0187" model="FC-101P5K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0595" type="VACON0100-3L-0016-5-FLOW+IP54" custom="131N0189" model="FC-101P7K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0596" type="VACON0100-3L-0023-5-FLOW+IP54" custom="131L9869" model="FC-101P11KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0597" type="VACON0100-3L-0031-5-FLOW+IP54" custom="131L9870" model="FC-101P15KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3379" type="VACON0100-3L-0038-5-FLOW+IP54" custom="131L9871" model="FC-101P18KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3380" type="VACON0100-3L-0046-5-FLOW+IP54" custom="131L9872" model="FC-101P22KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0598" type="VACON0100-3L-0061-5-FLOW+IP54" custom="131N0201" model="FC-101P30KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X2775" type="VACON0100-3L-0072-5-FLOW+IP54" custom="131N0205" model="FC-101P37KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X2909" type="VACON0100-3L-0087-5-FLOW+IP54" custom="131N0209" model="FC-101P45KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X0599" type="VACON0100-3L-0105-5-FLOW+IP54" custom="131N0213" model="FC-101P55KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X1208" type="VACON0100-3L-0140-5-FLOW+IP54" custom="131N0217" model="FC-101P75KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X2908" type="VACON0100-3L-0170-5-FLOW+IP54" custom="131N0221" model="FC-101P90KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X2774" type="VACON0100-3L-0205-5-FLOW+IP54" custom="134F4168" model="FC-202N110T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="134X3374" type="VACON0100-3L-0261-5-FLOW+IP54" custom="134F4108" model="FC-202N132T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT HVAC Basic Drive FC 101" />
-    <item brend="Vacon" order="-" type="VACON0100-3L-0310-5-FLOW+IP54" custom="134F4175" model="FC-202N160T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="134X0195" type="VACON0100-3L-0205-5-FLOW" custom="134F7097" model="FC-202N110T4E20H2XXCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="134X3887" type="VACON0100-3L-0261-5-FLOW" custom="134G2163" model="FC-202N132T4E20H2XXCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="134X0901" type="VACON0100-3L-0310-5-FLOW" custom="134F0371" model="FC-202N160T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="134X3851" type="VACON0100-3L-0385-5-FLOW+IP00" custom="134F0372" model="FC-202N200T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="134X9715" type="VACON0100-3L-0460-5-FLOW+IP00" custom="134F0373" model="FC-202N250T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="-" type="VACON0100-3L-0590-5-FLOW+IP00" custom="134F4192" model="FC-202N315T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
-    <item brend="Vacon" order="-" type="VACON0100-3L-0650-5-FLOW+IP00" custom="131F5856" model="FC-202P355T4E21H2XGC7XXSXXXXAXBXCXXXXDX" series="VLT AQUA Drive FC 202" />
+    <item brend="Vacon" order="-" type="Vacon 0010-1L-0001-2" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0263" type="Vacon 0010-1L-0002-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0264" type="Vacon 0010-1L-0003-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0265" type="Vacon 0010-1L-0004-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0266" type="Vacon 0010-1L-0005-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0267" type="Vacon 0010-1L-0007-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="-" type="Vacon 0010-1L-0011-2" custom="132F0007" model="FC-051P2K2S2E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0269" type="Vacon 0010-3L-0001-4" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0270" type="Vacon 0010-3L-0002-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0271" type="VACON0010-3L-0003-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0272" type="VACON0010-3L-0004-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0273" type="VACON0010-3L-0005-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0274" type="VACON0010-3L-0006-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0275" type="VACON0010-3L-0008-4" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0276" type="Vacon 0010-3L-0009-4" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0277" type="VACON0010-3L-0012-4" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VACON 10" />
+    <item brend="Vacon" order="134X0011" type="NXL00035C2H1" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0012" type="NXL00045C2H1" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0013" type="NXL00055C2H1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0014" type="NXL00075C2H1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0015" type="NXL00095C2H1" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0016" type="NXL00125C2H1" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0017" type="NXL00165C2H1" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0018" type="NXL00235C2H1" custom="132F0030" model="FC-051P7K5T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0019" type="NXL00315C2H1" custom="132F0058" model="FC-051P11KT4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0021" type="NXL00385C2H1" custom="132F0059" model="FC-051P15KT4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0022" type="NXL00465C2H1" custom="132F0060" model="FC-051P18KT4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X0023" type="NXL00615C2H1" custom="132F0061" model="FC-051P22KT4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="-" type="NXL00015C1N0" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="-" type="NXL00025C1N0" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="-" type="NXL00035C1N1" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="-" type="NXL00045C1N1" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="-" type="NXL00045C1N1" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON NXL" />
+    <item brend="Vacon" order="134X3575" type="VACON0020-3L-0001-4" custom="132F0017" model="FC-051PK37T4E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3576" type="VACON0020-3L-0002-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3577" type="VACON0020-3L-0003-4" custom="132F0018" model="FC-051PK75T4E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3578" type="VACON0020-3L-0004-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3579" type="VACON0020-3L-0005-4" custom="132F0020" model="FC-051P1K5T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3580" type="VACON0020-3L-0006-4" custom="132F0022" model="FC-051P2K2T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3581" type="VACON0020-3L-0008-4" custom="132F0024" model="FC-051P3K0T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0604" type="VACON0020-3L-0009-4" custom="132F0026" model="FC-051P4K0T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X2443" type="VACON0020-3L-0012-4" custom="132F0028" model="FC-051P5K5T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0278" type="VACON0020-3L-0016-4" custom="132F0030" model="FC-051P7K5T4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0279" type="VACON0020-3L-0023-4" custom="132F0058" model="FC-051P11KT4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0280" type="VACON0020-3L-0031-4" custom="132F0059" model="FC-051P15KT4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0281" type="VACON0020-3L-0038-4" custom="132F0060" model="FC-051P18KT4E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3568" type="VACON0020-1L-0001-2" custom="132F0001" model="FC-051PK18S2E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3569" type="VACON0020-1L-0002-2" custom="132F0002" model="FC-051PK37S2E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3570" type="VACON0020-1L-0003-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3571" type="VACON0020-1L-0004-2" custom="132F0003" model="FC-051PK75S2E20H3XXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3572" type="VACON0020-1L-0005-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3573" type="VACON0020-1L-0007-2" custom="132F0005" model="FC-051P1K5S2E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X3574" type="VACON0020-1L-0009-2" custom="132F0007" model="FC-051P2K2S2E20H3BXCXXXSXXX" series="VACON 20" />
+    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9861" model="FC-101PK37T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9862" model="FC-101PK75T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0179" type="VACON0100-3L-0004-5-FLOW" custom="131L9863" model="FC-101P1K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0180" type="VACON0100-3L-0005-5-FLOW" custom="131L9864" model="FC-101P2K2T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0181" type="VACON0100-3L-0008-5-FLOW" custom="131L9865" model="FC-101P3K0T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0182" type="VACON0100-3L-0009-5-FLOW" custom="131L9866" model="FC-101P4K0T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0183" type="VACON0100-3L-0012-5-FLOW" custom="131L9867" model="FC-101P5K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0184" type="VACON0100-3L-0016-5-FLOW" custom="131L9868" model="FC-101P7K5T4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0185" type="VACON0100-3L-0023-5-FLOW" custom="131L9869" model="FC-101P11KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0186" type="VACON0100-3L-0031-5-FLOW" custom="131L9870" model="FC-101P15KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0187" type="VACON0100-3L-0038-5-FLOW" custom="131L9871" model="FC-101P18KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0188" type="VACON0100-3L-0046-5-FLOW" custom="131L9872" model="FC-101P22KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0189" type="VACON0100-3L-0061-5-FLOW" custom="131L9873" model="FC-101P30KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0190" type="VACON0100-3L-0072-5-FLOW" custom="131L9881" model="FC-101P37KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0191" type="VACON0100-3L-0087-5-FLOW" custom="131L9889" model="FC-101P45KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0192" type="VACON0100-3L-0105-5-FLOW" custom="131L9897" model="FC-101P55KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0193" type="VACON0100-3L-0140-5-FLOW" custom="131L9905" model="FC-101P75KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0194" type="VACON0100-3L-0170-5-FLOW" custom="131L9913" model="FC-101P90KT4E20H2XXXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3375" type="VACON0100-3L-0003-5-FLOW+IP54" custom="131N0177" model="FC-101PK75T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X2914" type="VACON0100-3L-0004-5-FLOW+IP54" custom="131N0179" model="FC-101P1K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0592" type="VACON0100-3L-0005-5-FLOW+IP54" custom="131N0181" model="FC-101P2K2T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3377" type="VACON0100-3L-0008-5-FLOW+IP54" custom="131N0183" model="FC-101P3K0T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3378" type="VACON0100-3L-0009-5-FLOW+IP54" custom="131N0185" model="FC-101P4K0T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0594" type="VACON0100-3L-0012-5-FLOW+IP54" custom="131N0187" model="FC-101P5K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0595" type="VACON0100-3L-0016-5-FLOW+IP54" custom="131N0189" model="FC-101P7K5T4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0596" type="VACON0100-3L-0023-5-FLOW+IP54" custom="131L9869" model="FC-101P11KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0597" type="VACON0100-3L-0031-5-FLOW+IP54" custom="131L9870" model="FC-101P15KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3379" type="VACON0100-3L-0038-5-FLOW+IP54" custom="131L9871" model="FC-101P18KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3380" type="VACON0100-3L-0046-5-FLOW+IP54" custom="131L9872" model="FC-101P22KT4E20H4XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0598" type="VACON0100-3L-0061-5-FLOW+IP54" custom="131N0201" model="FC-101P30KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X2775" type="VACON0100-3L-0072-5-FLOW+IP54" custom="131N0205" model="FC-101P37KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X2909" type="VACON0100-3L-0087-5-FLOW+IP54" custom="131N0209" model="FC-101P45KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0599" type="VACON0100-3L-0105-5-FLOW+IP54" custom="131N0213" model="FC-101P55KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X1208" type="VACON0100-3L-0140-5-FLOW+IP54" custom="131N0217" model="FC-101P75KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X2908" type="VACON0100-3L-0170-5-FLOW+IP54" custom="131N0221" model="FC-101P90KT4E5AH2XAXXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X2774" type="VACON0100-3L-0205-5-FLOW+IP54" custom="134F4168" model="FC-202N110T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3374" type="VACON0100-3L-0261-5-FLOW+IP54" custom="134F4108" model="FC-202N132T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="-" type="VACON0100-3L-0310-5-FLOW+IP54" custom="134F4175" model="FC-202N160T4E54H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0195" type="VACON0100-3L-0205-5-FLOW" custom="134F7097" model="FC-202N110T4E20H2XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3887" type="VACON0100-3L-0261-5-FLOW" custom="134G2163" model="FC-202N132T4E20H2XXCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X0901" type="VACON0100-3L-0310-5-FLOW" custom="134F0371" model="FC-202N160T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X3851" type="VACON0100-3L-0385-5-FLOW+IP00" custom="134F0372" model="FC-202N200T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="134X9715" type="VACON0100-3L-0460-5-FLOW+IP00" custom="134F0373" model="FC-202N250T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="-" type="VACON0100-3L-0590-5-FLOW+IP00" custom="134F4192" model="FC-202N315T4E20H2XGCXXXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
+    <item brend="Vacon" order="-" type="VACON0100-3L-0650-5-FLOW+IP00" custom="131F5856" model="FC-202P355T4E21H2XGC7XXSXXXXAXBXCXXXXDX" series="VACON 100 FLOW" />
 
   
   <!--Vesper items-->
