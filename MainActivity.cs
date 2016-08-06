@@ -7,6 +7,7 @@ using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -47,6 +48,12 @@ namespace CompetitorTool
 
             SetContentView(Resource.Layout.Main);
 
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
+            {
+                Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+                Window.SetStatusBarColor(Color.ParseColor("#9c0303"));
+            }
+
             LinearLayout ll = FindViewById<LinearLayout>(Resource.Id.LL);
             ll.SetBackgroundColor(Color.ParseColor("#f0f0f0"));
 
@@ -54,7 +61,7 @@ namespace CompetitorTool
            
             хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
             var codes = хdoc.Root.Elements("item").Select(x => x);
-            var ids = codes.Select(x => x.Attribute("id").Value).ToList();
+            var ids = codes.Select(x => x.Attribute("order").Value + " | " + x.Attribute("type").Value).ToList();
             var adapter = new ArrayExAdapter<string>(this, Resource.Layout.listItem, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
@@ -75,12 +82,12 @@ namespace CompetitorTool
                     return;
                 }
 
-                //Toast.MakeText(this, itemView.Text, ToastLength.Short).Show();
-
                 if (хdoc == null)
                     хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
 
-                var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("id") == itemView.Text).FirstOrDefault();
+                var search = itemView.Text.Split('|').Select(p => p.Trim()).ToList();
+
+                var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("order") == search[0] && (string)x.Attribute("type") == search[1]).FirstOrDefault();
                 var brend = item.FirstAttribute.Value;
 
                 textView2.SetText("Бренд: " + brend, TextView.BufferType.Normal);
@@ -96,6 +103,7 @@ namespace CompetitorTool
                 if (item != null)
                 {
                     var codeData = new List<string>() {
+                            item.Attribute("series").Value,
                             item.Attribute("custom").Value,
                             item.Attribute("model").Value
                         };
@@ -103,7 +111,7 @@ namespace CompetitorTool
                     var isVacon = (brend == "Vacon" ? true : false);
 
                     txtView = new TextView(this);
-                    txtView.Text = "Аналог " + (isVacon ? brend : "Данфосс");
+                    txtView.Text = "Аналог марки VLT";
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
                     txtView.SetTextColor(Color.Black);
@@ -114,32 +122,55 @@ namespace CompetitorTool
                     tableRow.AddView(txtView);
                     tableLayout.AddView(tableRow);
 
-                    for (int i = 0; i < codeData.Count; i++)
+                    if (isVacon)
                     {
-                        
-                        txtView = new TextView(this);
-                        txtView.TextFormatted = Html.FromHtml("<b>" + (i == 0 ? "Заказной код:  " : "Типовой код:  ") + "</b>" + codeData[i]);
-                        txtView.SetBackgroundResource(Resource.Layout.finded);
-                        txtView.Gravity = GravityFlags.Left ;
-                        txtView.SetPadding(25, 25, 25, 25);
-                        txtView.SetTextColor(Color.Black);
-                        txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                        var items = хdoc.Root.Elements("item")
+                            .Where(x => (string)x.Attribute("brend") != "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value)
+                            .OrderBy(x => (string)x.Attribute("brend"))
+                            .ToList();
 
-                        tableRow = new TableRow(this);
-                        tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
-                        tableRow.AddView(txtView);
-
-                        tableLayout.AddView(tableRow);
+                        if (items != null && items.Count > 0)
+                        {
+                            Toast.MakeText(this, "Найдено записей: " + items.Count.ToString(), ToastLength.Short).Show();
+                            drawItems(items, tableLayout, tableRow);
+                        }
                     }
-
-                    if (!isVacon)
+                    else
                     {
-                        var items = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("brend") == "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value).ToList();
+                        for (int i = 0; i < codeData.Count; i++)
+                        {
+
+                            var txt = "<b>";
+                            if (i == 0)
+                                txt += "Серия:";
+                            else if (i == 1)
+                                txt += "Заказной код:";
+                            else if (i == 2)
+                                txt += "Типовой код:";
+                            txt += "<b> ";
+
+                            txtView = new TextView(this);
+                            txtView.TextFormatted = Html.FromHtml(txt + codeData[i]);
+                            txtView.SetBackgroundResource(Resource.Layout.finded);
+                            txtView.Gravity = GravityFlags.Left;
+                            txtView.SetPadding(25, 25, 25, 25);
+                            txtView.SetTextColor(Color.Black);
+                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+
+                            tableRow = new TableRow(this);
+                            tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                            tableRow.AddView(txtView);
+                            tableLayout.AddView(tableRow);
+                        }
+
+                        var items = хdoc.Root.Elements("item")
+                            .Where(x => (string)x.Attribute("brend") == "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value)
+                            .ToList();
 
                         if (items != null && items.Count > 0)
                         {
                             txtView = new TextView(this);
-                            txtView.Text = "Аналог Vacon";
+                            txtView.Text = "Аналог марки Vacon";
                             txtView.Gravity = GravityFlags.Left;
                             txtView.SetPadding(25, 50, 25, 25);
                             txtView.SetTextColor(Color.Black);
@@ -150,47 +181,9 @@ namespace CompetitorTool
                             tableRow.AddView(txtView);
 
                             tableLayout.AddView(tableRow);
-                        }
 
-                        foreach (var it in items)
-                        {
-
-                            codeData = new List<string>() {
-                                it.Attribute("id").Value,
-                                it.Attribute("custom").Value,
-                                it.Attribute("model").Value
-                            };
-
-                            for (int i = 0; i < codeData.Count; i++)
-                            {
-                              
-                                txtView = new TextView(this);
-                                txtView.TextFormatted = Html.FromHtml("<b>" + (i == 0 ? "Типовой код:  " : (i == 1 ? "Заказной код MicroDrive:  " : "Типовой код MicroDrive:  ")) + "</b>" + codeData[i]);
-                                txtView.SetBackgroundResource(Resource.Layout.finded);
-                                txtView.Gravity = GravityFlags.Left;
-                                txtView.SetPadding(25, 25, 25, 25);
-                                txtView.SetTextColor(Color.Black);
-                                //txtView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);
-
-                                tableRow = new TableRow(this);
-                                tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
-                                tableRow.AddView(txtView);
-
-                                tableLayout.AddView(tableRow);
-                            }
-
-                            txtView = new TextView(this);
-                            txtView.Text = "";
-                            txtView.Gravity = GravityFlags.Left;
-                            txtView.SetPadding(25, 25, 25, 25);
-                            txtView.SetTextColor(Color.Black);
-                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-
-                            tableRow = new TableRow(this);
-                            tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
-                            tableRow.AddView(txtView);
-
-                            tableLayout.AddView(tableRow);
+                            Toast.MakeText(this, "Найдено записей: " + items.Count.ToString(), ToastLength.Short).Show();
+                            drawItems(items, tableLayout, tableRow);
                         }
 
                     }
@@ -224,6 +217,61 @@ namespace CompetitorTool
             };
         }
 
+        private void drawItems(List<XElement> items, TableLayout tableLayout, TableRow tableRow) {
+
+            foreach (var it in items)
+            {
+
+                var codeData = new List<string>() {
+
+                                it.Attribute("series").Value,
+                                it.Attribute("custom").Value,
+                                it.Attribute("model").Value,
+                                it.Attribute("brend").Value
+                            };
+
+                for (int i = 0; i < codeData.Count; i++)
+                {
+                    var txt = "<b>";
+                    if (i == 0)
+                        txt += "Серия:";
+                    else if (i == 1)
+                        txt += "Заказной код:";
+                    else if (i == 2)
+                        txt += "Типовой код:";
+                    else if (i == 3)
+                        txt += "Бренд:";
+                    txt += "<b> ";
+
+                    txtView = new TextView(this);
+                    txtView.TextFormatted = Html.FromHtml(txt + codeData[i]);
+                    txtView.SetBackgroundResource(Resource.Layout.finded);
+                    txtView.Gravity = GravityFlags.Left;
+                    txtView.SetPadding(25, 25, 25, 25);
+                    txtView.SetTextColor(Color.Black);
+                    //txtView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);
+
+                    tableRow = new TableRow(this);
+                    tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                    tableRow.AddView(txtView);
+
+                    tableLayout.AddView(tableRow);
+                }
+
+                txtView = new TextView(this);
+                txtView.Text = "";
+                txtView.Gravity = GravityFlags.Left;
+                txtView.SetPadding(25, 25, 25, 25);
+                txtView.SetTextColor(Color.Black);
+                txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+
+                tableRow = new TableRow(this);
+                tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                tableRow.AddView(txtView);
+
+                tableLayout.AddView(tableRow);
+            }
+        }
 
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
