@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="Введите известный Вам код"
             android:textStyle="bold"
-            android:textSize="70px"
+            android:textSize="20dp"
             android:layout_marginTop="7dp"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/black"
@@ -28,25 +28,26 @@
                 android:id="@+id/autocomplete_codes"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="70px"
+                android:textSize="20dp"
                 android:singleLine="true"
                 android:imeOptions="actionNext"
                 android:background="@layout/find"
-                android:textCursorDrawable="@drawable/@android:color/black" />
-            <ProgressBar
+                android:textColor="@android:color/black"
+                android:textCursorDrawable="@android:color/black" />
+            <!--<ProgressBar
                 android:id="@+id/progress_bar"
-                style="@android:attr/progressBarStyleSmall"
+                android:style="@android:attr/progressBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="16dp"
-                android:visibility="gone" />
+                android:visibility="gone" />-->
         </FrameLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="50px"
+            android:textSize="13dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/textView2" />

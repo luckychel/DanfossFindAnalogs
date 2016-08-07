@@ -87,17 +87,14 @@ namespace CompetitorTool
 			// aapt resource value: 0x7f060002
 			public const int linearLayout2 = 2131099650;
 			
-			// aapt resource value: 0x7f060008
-			public const int progress_bar = 2131099656;
-			
-			// aapt resource value: 0x7f06000a
-			public const int results1 = 2131099658;
+			// aapt resource value: 0x7f060009
+			public const int results1 = 2131099657;
 			
 			// aapt resource value: 0x7f060004
 			public const int textView1 = 2131099652;
 			
-			// aapt resource value: 0x7f060009
-			public const int textView2 = 2131099657;
+			// aapt resource value: 0x7f060008
+			public const int textView2 = 2131099656;
 			
 			static Id()
 			{

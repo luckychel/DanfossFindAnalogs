@@ -37,16 +37,26 @@ namespace CompetitorTool
         {
             base.OnCreate(bundle);
 
+            SetContentView(Resource.Layout.Main);
+
             ActionBar actionBar = ActionBar;
             actionBar.Title = "";
             actionBar.SetDisplayHomeAsUpEnabled(false);
             actionBar.SetDisplayShowCustomEnabled(true);
             actionBar.SetCustomView(Resource.Layout.actionBar);
             actionBar.NavigationMode = ActionBarNavigationMode.Standard;
-            Toolbar parent = (Toolbar)actionBar.CustomView.Parent;
-            parent.SetContentInsetsAbsolute(0, 0);
 
-            SetContentView(Resource.Layout.Main);
+            this.RequestedOrientation = Android.Content.PM.ScreenOrientation.Sensor;
+
+            try
+            {
+                Toolbar parent = (Toolbar)actionBar.CustomView.Parent;
+                parent.SetContentInsetsAbsolute(0, 0);
+            }
+            catch (Exception e)
+            {
+                Toast.MakeText(this, e.Message, ToastLength.Long).Show();
+            }
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
             {
@@ -115,7 +125,7 @@ namespace CompetitorTool
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
                     txtView.SetTextColor(Color.Black);
-                    txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
+                    txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
                     txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
                     
                     var tableRow = new TableRow(this);
@@ -164,7 +174,9 @@ namespace CompetitorTool
                         }
 
                         var items = хdoc.Root.Elements("item")
-                            .Where(x => (string)x.Attribute("brend") == "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value)
+                            .Where(x => (string)x.Attribute("brend") == "Vacon" 
+                                && (string)x.Attribute("custom") == item.Attribute("custom").Value
+                                && (string)x.Attribute("series") != "VACON 10" && (string)x.Attribute("series") != "VACON NXL")
                             .ToList();
 
                         if (items != null && items.Count > 0)
@@ -174,7 +186,7 @@ namespace CompetitorTool
                             txtView.Gravity = GravityFlags.Left;
                             txtView.SetPadding(25, 50, 25, 25);
                             txtView.SetTextColor(Color.Black);
-                            txtView.SetTextSize(Android.Util.ComplexUnitType.Px, 70);
+                            txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
                             txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                             tableRow = new TableRow(this);
