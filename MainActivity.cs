@@ -132,47 +132,33 @@ namespace CompetitorTool
                     tableRow.AddView(txtView);
                     tableLayout.AddView(tableRow);
 
-                    if (isVacon)
+                    for (int i = 0; i < codeData.Count; i++)
                     {
-                        var items = хdoc.Root.Elements("item")
-                            .Where(x => (string)x.Attribute("brend") != "Vacon" && (string)x.Attribute("custom") == item.Attribute("custom").Value)
-                            .OrderBy(x => (string)x.Attribute("brend"))
-                            .ToList();
+                        var txt = "<b>";
+                        if (i == 0)
+                            txt += "Серия:";
+                        else if (i == 1)
+                            txt += "Заказной код:";
+                        else if (i == 2)
+                            txt += "Типовой код:";
+                        txt += "</b> ";
 
-                        if (items != null && items.Count > 0)
-                        {
-                            Toast.MakeText(this, "Найдено записей: " + items.Count.ToString(), ToastLength.Short).Show();
-                            drawItems(items, tableLayout, tableRow);
-                        }
+                        txtView = new TextView(this);
+                        txtView.TextFormatted = Html.FromHtml(txt + (i == 0 && isVacon ? "Micro Drive": codeData[i]));
+                        txtView.SetBackgroundResource(Resource.Layout.finded);
+                        txtView.Gravity = GravityFlags.Left;
+                        txtView.SetPadding(25, 25, 25, 25);
+                        txtView.SetTextColor(Color.Black);
+                        txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+
+                        tableRow = new TableRow(this);
+                        tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
+                        tableRow.AddView(txtView);
+                        tableLayout.AddView(tableRow);
                     }
-                    else
+
+                    if (!isVacon)
                     {
-                        for (int i = 0; i < codeData.Count; i++)
-                        {
-
-                            var txt = "<b>";
-                            if (i == 0)
-                                txt += "Серия:";
-                            else if (i == 1)
-                                txt += "Заказной код:";
-                            else if (i == 2)
-                                txt += "Типовой код:";
-                            txt += "<b> ";
-
-                            txtView = new TextView(this);
-                            txtView.TextFormatted = Html.FromHtml(txt + codeData[i]);
-                            txtView.SetBackgroundResource(Resource.Layout.finded);
-                            txtView.Gravity = GravityFlags.Left;
-                            txtView.SetPadding(25, 25, 25, 25);
-                            txtView.SetTextColor(Color.Black);
-                            txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
-
-                            tableRow = new TableRow(this);
-                            tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
-                            tableRow.AddView(txtView);
-                            tableLayout.AddView(tableRow);
-                        }
-
                         var items = хdoc.Root.Elements("item")
                             .Where(x => (string)x.Attribute("brend") == "Vacon" 
                                 && (string)x.Attribute("custom") == item.Attribute("custom").Value
@@ -237,9 +223,9 @@ namespace CompetitorTool
                 var codeData = new List<string>() {
 
                                 it.Attribute("series").Value,
-                                it.Attribute("custom").Value,
-                                it.Attribute("model").Value,
-                                it.Attribute("brend").Value
+                                it.Attribute("order").Value,
+                                it.Attribute("type").Value//,
+                                //it.Attribute("brend").Value
                             };
 
                 for (int i = 0; i < codeData.Count; i++)
@@ -251,9 +237,9 @@ namespace CompetitorTool
                         txt += "Заказной код:";
                     else if (i == 2)
                         txt += "Типовой код:";
-                    else if (i == 3)
-                        txt += "Бренд:";
-                    txt += "<b> ";
+                    //else if (i == 3)
+                    //    txt += "Бренд:";
+                    txt += "</b> ";
 
                     txtView = new TextView(this);
                     txtView.TextFormatted = Html.FromHtml(txt + codeData[i]);
