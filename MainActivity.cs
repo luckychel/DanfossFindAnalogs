@@ -75,12 +75,24 @@ namespace CompetitorTool
             var adapter = new ArrayExAdapter<string>(this, Resource.Layout.listItem, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
+
             AutoCompleteTextView autocomplete = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
             autocomplete.SetHintTextColor(Color.Red);
             autocomplete.Adapter = adapter;
             autocomplete.Threshold = 1;
+
+
+            var imageClear = FindViewById<ImageButton>(Resource.Id.imageButton1);
+            imageClear.Visibility = ViewStates.Invisible;
+
+            imageClear.Click += (sender, args) =>
+            {
+                autocomplete.Text = "";
+                imageClear.Visibility = ViewStates.Invisible;
+            };
+           
             //autocomplete.((ProgressBar)findViewById(R.id.progress_bar));
-            autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext));
+            autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext, imageClear));
             autocomplete.ItemClick += (sender, args) =>
             {
                
@@ -193,7 +205,6 @@ namespace CompetitorTool
 
             };
 
-
             var imageHelp = FindViewById<ImageView>(Resource.Id.imageView2);
             
             imageHelp.Click += (sender, args) =>
@@ -213,6 +224,8 @@ namespace CompetitorTool
                 //Add fragment
                 newFragment.Show(ft, "dialog");
             };
+
+           
         }
 
         private void drawItems(List<XElement> items, TableLayout tableLayout, TableRow tableRow) {
@@ -278,11 +291,15 @@ namespace CompetitorTool
 
             hideKeyBoard();
 
+
+
             //Toast.MakeText(this, "called OnConfigurationChanged", ToastLength.Long).Show();
 
             //if (newConfig.Orientation == Android.Content.Res.Orientation.Landscape)
             //{
-            //    Toast.MakeText(this, "landscape", ToastLength.Long).Show();
+            //    //Toast.MakeText(this, "landscape", ToastLength.Long).Show();
+            //    var img = FindViewById<ImageView>(Resource.Id.imageView1);
+            //    img.Layout(10, 0, 0, 0);
             //}
             //else
             //{
@@ -308,13 +325,20 @@ namespace CompetitorTool
     {
 
         private Context myContext;
-        public MyTextWatcher(Context ctx) {
+        private ImageButton myClear;
+        public MyTextWatcher(Context ctx, ImageButton clear) {
             myContext = ctx;
+            myClear = clear;
         }
 
         public void AfterTextChanged(IEditable s) {
             //var ss = s.Where(x => x.ToString() != "\n").ToArray();
             //s = new Java.Lang.String(ss);
+            if (s != null)
+                if (s.ToString().Length > 0)
+                    myClear.Visibility = ViewStates.Visible;
+                else
+                    myClear.Visibility = ViewStates.Invisible;
         }
         public void BeforeTextChanged(Java.Lang.ICharSequence arg0, int start, int count, int after) {
 
