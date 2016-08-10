@@ -56,6 +56,9 @@ namespace CompetitorTool
 			// aapt resource value: 0x7f020003
 			public const int Logo = 2130837507;
 			
+			// aapt resource value: 0x7f020004
+			public const int send_email = 2130837508;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -69,17 +72,41 @@ namespace CompetitorTool
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060006
-			public const int LL = 2131099654;
+			// aapt resource value: 0x7f06000c
+			public const int LL = 2131099660;
 			
-			// aapt resource value: 0x7f060007
-			public const int autocomplete_codes = 2131099655;
+			// aapt resource value: 0x7f06000d
+			public const int autocomplete_codes = 2131099661;
 			
 			// aapt resource value: 0x7f060005
 			public const int btnHelpClose = 2131099653;
 			
+			// aapt resource value: 0x7f06000b
+			public const int btnSend = 2131099659;
+			
+			// aapt resource value: 0x7f060011
+			public const int btnSendFromMain = 2131099665;
+			
+			// aapt resource value: 0x7f06000a
+			public const int editComment = 2131099658;
+			
 			// aapt resource value: 0x7f060008
-			public const int imageButton1 = 2131099656;
+			public const int editEmail = 2131099656;
+			
+			// aapt resource value: 0x7f060006
+			public const int editFIO = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int editOrganization = 2131099655;
+			
+			// aapt resource value: 0x7f060009
+			public const int editPhone = 2131099657;
+			
+			// aapt resource value: 0x7f06000f
+			public const int frameLayout1 = 2131099663;
+			
+			// aapt resource value: 0x7f06000e
+			public const int imageButton1 = 2131099662;
 			
 			// aapt resource value: 0x7f060001
 			public const int imageView1 = 2131099649;
@@ -93,14 +120,14 @@ namespace CompetitorTool
 			// aapt resource value: 0x7f060002
 			public const int linearLayout2 = 2131099650;
 			
-			// aapt resource value: 0x7f06000a
-			public const int results1 = 2131099658;
+			// aapt resource value: 0x7f060012
+			public const int results1 = 2131099666;
 			
 			// aapt resource value: 0x7f060004
 			public const int textView1 = 2131099652;
 			
-			// aapt resource value: 0x7f060009
-			public const int textView2 = 2131099657;
+			// aapt resource value: 0x7f060010
+			public const int textView2 = 2131099664;
 			
 			static Id()
 			{
@@ -140,7 +167,10 @@ namespace CompetitorTool
 			public const int logoBackground = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int Main = 2130903048;
+			public const int mailForm = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int Main = 2130903049;
 			
 			static Layout()
 			{

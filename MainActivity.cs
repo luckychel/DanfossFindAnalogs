@@ -7,6 +7,7 @@ using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,27 @@ using System.Xml.Linq;
 namespace CompetitorTool
 {
 
-
-    [Activity
-        (
+    [Activity(
             MainLauncher = true
             , Label = "Competitor Tool"
             , Theme = "@style/MyCustomTheme"
             , Icon = "@drawable/Icon"
             , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
             
-        )
-    ]
+    )]
     public class MainActivity : Activity
     {
         
         private XDocument хdoc;
         private TextView txtView;
-      
+        
+        private LinearLayout ll;
+        private TextView textView2;
+        private AutoCompleteTextView autocomplete;
+        private ImageButton imageClear;
+        private ImageView imageHelp;
+        private Button bntSendFromMain;
+        private TableLayout tableLayout;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -45,7 +50,6 @@ namespace CompetitorTool
             actionBar.SetDisplayShowCustomEnabled(true);
             actionBar.SetCustomView(Resource.Layout.actionBar);
             actionBar.NavigationMode = ActionBarNavigationMode.Standard;
-
             this.RequestedOrientation = Android.Content.PM.ScreenOrientation.Sensor;
 
             try
@@ -64,169 +68,185 @@ namespace CompetitorTool
                 Window.SetStatusBarColor(Color.ParseColor("#9c0303"));
             }
 
-            LinearLayout ll = FindViewById<LinearLayout>(Resource.Id.LL);
-            ll.SetBackgroundColor(Color.ParseColor("#f0f0f0"));
+            ll = FindViewById<LinearLayout>(Resource.Id.LL);
+            textView2 = FindViewById<TextView>(Resource.Id.textView2);
+            autocomplete = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
+            tableLayout = FindViewById<TableLayout>(Resource.Id.results1);
+            imageClear = FindViewById<ImageButton>(Resource.Id.imageButton1);
+            imageHelp = FindViewById<ImageView>(Resource.Id.imageView2);
+            bntSendFromMain = FindViewById<Button>(Resource.Id.btnSendFromMain);
 
-            TextView textView2 = FindViewById<TextView>(Resource.Id.textView2);
-           
+            ll.SetBackgroundColor(Color.ParseColor("#f0f0f0"));
+            ll.Click += LL_Click;
+
             хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
             var codes = хdoc.Root.Elements("item").Select(x => x);
             var ids = codes.Select(x => x.Attribute("order").Value + " | " + x.Attribute("type").Value).ToList();
             var adapter = new ArrayExAdapter<string>(this, Resource.Layout.listItem, ids);
             //var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.Codes, Resource.Layout.list_item);
 
-
-            AutoCompleteTextView autocomplete = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_codes);
             autocomplete.SetHintTextColor(Color.Red);
             autocomplete.Adapter = adapter;
             autocomplete.Threshold = 1;
-
-
-            var imageClear = FindViewById<ImageButton>(Resource.Id.imageButton1);
-            imageClear.Visibility = ViewStates.Invisible;
-
-            imageClear.Click += (sender, args) =>
-            {
-                autocomplete.Text = "";
-                imageClear.Visibility = ViewStates.Invisible;
-            };
-           
-            //autocomplete.((ProgressBar)findViewById(R.id.progress_bar));
             autocomplete.AddTextChangedListener(new MyTextWatcher(this.BaseContext, imageClear));
-            autocomplete.ItemClick += (sender, args) =>
+            autocomplete.ItemClick += AutoComplete_ItemClick;
+
+            imageClear.Click += ImageClear_Click;
+            imageHelp.Click += ImageHelp_Click;
+            bntSendFromMain.Click += BtnFromMain_Click;
+
+        }
+
+        
+        #region Event Handlers
+        private void LL_Click(object sender, EventArgs e)
+        {
+            hideKeyBoard();
+        }
+        private void AutoComplete_ItemClick(object sender, EventArgs eventArgs)
+        {
+            var itemView = sender as TextView;
+
+            if (itemView.Text == limitRows.limValueText)
             {
-               
-                var itemView = sender as TextView;
+                autocomplete.SetText("", TextView.BufferType.Normal);
+                return;
+            }
 
-                if (itemView.Text == limitRows.limValueText)
-                {
-                    autocomplete.SetText("", TextView.BufferType.Normal);
-                    return;
-                }
+            if (хdoc == null)
+                хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
 
-                if (хdoc == null)
-                    хdoc = XDocument.Load(Resources.GetXml(Resource.Xml.codes));
+            var search = itemView.Text.Split('|').Select(p => p.Trim()).ToList();
 
-                var search = itemView.Text.Split('|').Select(p => p.Trim()).ToList();
+            var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("order") == search[0] && (string)x.Attribute("type") == search[1]).FirstOrDefault();
+            var brend = item.FirstAttribute.Value;
 
-                var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("order") == search[0] && (string)x.Attribute("type") == search[1]).FirstOrDefault();
-                var brend = item.FirstAttribute.Value;
+            textView2.SetText("Бренд: " + brend, TextView.BufferType.Normal);
 
-                textView2.SetText("Бренд: " + brend, TextView.BufferType.Normal);
 
-                var tableLayout = FindViewById<TableLayout>(Resource.Id.results1);
-                tableLayout.RemoveAllViewsInLayout();
-                tableLayout.RemoveAllViews();
+            tableLayout.RemoveAllViewsInLayout();
+            tableLayout.RemoveAllViews();
 
-                TableLayout.LayoutParams par = new TableLayout.LayoutParams(TableLayout.LayoutParams.WrapContent, TableLayout.LayoutParams.MatchParent);
-                par.SetMargins(20, 0, 20, 0);
-                tableLayout.LayoutParameters = par;
+            TableLayout.LayoutParams par = new TableLayout.LayoutParams(TableLayout.LayoutParams.WrapContent, TableLayout.LayoutParams.MatchParent);
+            par.SetMargins(20, 0, 20, 0);
+            tableLayout.LayoutParameters = par;
 
-                if (item != null)
-                {
-                    var codeData = new List<string>() {
+            if (item != null)
+            {
+                var codeData = new List<string>() {
                             item.Attribute("series").Value,
                             item.Attribute("custom").Value,
                             item.Attribute("model").Value
                         };
-                    
-                    var isVacon = (brend == "Vacon" ? true : false);
+
+                var isVacon = (brend == "Vacon" ? true : false);
+
+                txtView = new TextView(this);
+                txtView.Text = "Аналог марки VLT";
+                txtView.Gravity = GravityFlags.Left;
+                txtView.SetPadding(25, 25, 25, 25);
+                txtView.SetTextColor(Color.Black);
+                txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
+                txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
+
+                var tableRow = new TableRow(this);
+                tableRow.AddView(txtView);
+                tableLayout.AddView(tableRow);
+
+                for (int i = 0; i < codeData.Count; i++)
+                {
+                    var txt = "<b>";
+                    if (i == 0)
+                        txt += "Серия:";
+                    else if (i == 1)
+                        txt += "Заказной код:";
+                    else if (i == 2)
+                        txt += "Типовой код:";
+                    txt += "</b> ";
 
                     txtView = new TextView(this);
-                    txtView.Text = "Аналог марки VLT";
+                    txtView.TextFormatted = Html.FromHtml(txt + (i == 0 && isVacon ? "Micro Drive" : codeData[i]));
+                    txtView.SetBackgroundResource(Resource.Layout.finded);
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
                     txtView.SetTextColor(Color.Black);
-                    txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
-                    txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
-                    
-                    var tableRow = new TableRow(this);
+                    txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+
+                    tableRow = new TableRow(this);
+                    tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
                     tableRow.AddView(txtView);
                     tableLayout.AddView(tableRow);
+                }
 
-                    for (int i = 0; i < codeData.Count; i++)
+                if (!isVacon)
+                {
+                    var items = хdoc.Root.Elements("item")
+                        .Where(x => (string)x.Attribute("brend") == "Vacon"
+                            && (string)x.Attribute("custom") == item.Attribute("custom").Value
+                            && (string)x.Attribute("series") != "VACON 10" && (string)x.Attribute("series") != "VACON NXL")
+                        .ToList();
+
+                    if (items != null && items.Count > 0)
                     {
-                        var txt = "<b>";
-                        if (i == 0)
-                            txt += "Серия:";
-                        else if (i == 1)
-                            txt += "Заказной код:";
-                        else if (i == 2)
-                            txt += "Типовой код:";
-                        txt += "</b> ";
-
                         txtView = new TextView(this);
-                        txtView.TextFormatted = Html.FromHtml(txt + (i == 0 && isVacon ? "Micro Drive": codeData[i]));
-                        txtView.SetBackgroundResource(Resource.Layout.finded);
+                        txtView.Text = "Аналог марки Vacon";
                         txtView.Gravity = GravityFlags.Left;
-                        txtView.SetPadding(25, 25, 25, 25);
+                        txtView.SetPadding(25, 50, 25, 25);
                         txtView.SetTextColor(Color.Black);
-                        txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                        txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
+                        txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                         tableRow = new TableRow(this);
-                        tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
                         tableRow.AddView(txtView);
+
                         tableLayout.AddView(tableRow);
+
+                        drawItems(items, tableLayout, tableRow);
                     }
 
-                    if (!isVacon)
-                    {
-                        var items = хdoc.Root.Elements("item")
-                            .Where(x => (string)x.Attribute("brend") == "Vacon" 
-                                && (string)x.Attribute("custom") == item.Attribute("custom").Value
-                                && (string)x.Attribute("series") != "VACON 10" && (string)x.Attribute("series") != "VACON NXL")
-                            .ToList();
-
-                        if (items != null && items.Count > 0)
-                        {
-                            txtView = new TextView(this);
-                            txtView.Text = "Аналог марки Vacon";
-                            txtView.Gravity = GravityFlags.Left;
-                            txtView.SetPadding(25, 50, 25, 25);
-                            txtView.SetTextColor(Color.Black);
-                            txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
-                            txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
-
-                            tableRow = new TableRow(this);
-                            tableRow.AddView(txtView);
-
-                            tableLayout.AddView(tableRow);
-
-                            Toast.MakeText(this, "Найдено записей: " + items.Count.ToString(), ToastLength.Short).Show();
-                            drawItems(items, tableLayout, tableRow);
-                        }
-
-                    }
-
-
-                    hideKeyBoard();
                 }
 
+                Toast.MakeText(this, "Поиск завершен", ToastLength.Short).Show();
 
-            };
+                hideKeyBoard();
 
-            var imageHelp = FindViewById<ImageView>(Resource.Id.imageView2);
-            
-            imageHelp.Click += (sender, args) =>
-            {
-                FragmentTransaction ft = FragmentManager.BeginTransaction();
-                //Remove fragment else it will crash as it is already added to backstack
-                Fragment prev = FragmentManager.FindFragmentByTag("dialog");
-                if (prev != null)
-                {
-                    ft.Remove(prev);
-                }
-                ft.AddToBackStack(null);
-                // Create and show the dialog.
-                DialogFragment1 newFragment = DialogFragment1.NewInstance(null);
-                //No title
-                newFragment.SetStyle(DialogFragmentStyle.NoTitle, 0);
-                //Add fragment
-                newFragment.Show(ft, "dialog");
-            };
-
-           
+                bntSendFromMain.Visibility = ViewStates.Visible;
+            }
         }
+
+        private void ImageClear_Click(object sender, EventArgs e)
+        {
+            autocomplete.Text = "";
+            imageClear.Visibility = ViewStates.Invisible;
+        }
+
+        private void ImageHelp_Click(object sender, EventArgs e)
+        {
+            FragmentTransaction ft = FragmentManager.BeginTransaction();
+            //Remove fragment else it will crash as it is already added to backstack
+            Fragment prev = FragmentManager.FindFragmentByTag("dialog");
+            if (prev != null)
+            {
+                ft.Remove(prev);
+            }
+            ft.AddToBackStack(null);
+            // Create and show the dialog.
+            DialogFragment1 newFragment = DialogFragment1.NewInstance(null);
+            //No title
+            newFragment.SetStyle(DialogFragmentStyle.NoTitle, 0);
+            //Add fragment
+            newFragment.Show(ft, "dialog");
+        }
+        
+        private void BtnFromMain_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(MailForm));
+            intent.PutExtra("FindedData", "Hello");
+            StartActivity(intent);
+            OverridePendingTransition(Android.Resource.Animation.SlideInLeft, Android.Resource.Animation.SlideOutRight);
+        }
+
+        #endregion;
 
         private void drawItems(List<XElement> items, TableLayout tableLayout, TableRow tableRow) {
 
@@ -291,8 +311,6 @@ namespace CompetitorTool
 
             hideKeyBoard();
 
-
-
             //Toast.MakeText(this, "called OnConfigurationChanged", ToastLength.Long).Show();
 
             //if (newConfig.Orientation == Android.Content.Res.Orientation.Landscape)
@@ -307,10 +325,9 @@ namespace CompetitorTool
             //}
         }
 
-
         private void hideKeyBoard()
         {
-            InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Context.InputMethodService);
+            InputMethodManager inputManager = (InputMethodManager)this.GetSystemService(Activity.InputMethodService);
             var currentFocus = this.CurrentFocus;
             if (currentFocus != null)
             {
@@ -318,7 +335,6 @@ namespace CompetitorTool
             }
         }
     }
-
 
 
     public class MyTextWatcher : Java.Lang.Object, ITextWatcher
@@ -354,8 +370,6 @@ namespace CompetitorTool
         }
     }
 
-
-   
 
     public class JavaObjectWrapper<T> : Java.Lang.Object
     {
