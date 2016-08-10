@@ -8,7 +8,6 @@ using Android.Views.InputMethods;
 using Android.Widget;
 using System;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace CompetitorTool
 {

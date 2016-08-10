@@ -7,7 +7,6 @@ using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -243,7 +242,7 @@ namespace CompetitorTool
             Intent intent = new Intent(this, typeof(MailForm));
             intent.PutExtra("FindedData", "Hello");
             StartActivity(intent);
-            OverridePendingTransition(Android.Resource.Animation.SlideInLeft, Android.Resource.Animation.SlideOutRight);
+            OverridePendingTransition(Resource.Animation.slide_in_top, Resource.Animation.slide_out_bottom);
         }
 
         #endregion;
