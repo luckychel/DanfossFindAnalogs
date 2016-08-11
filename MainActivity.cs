@@ -10,6 +10,7 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 namespace CompetitorTool
@@ -120,8 +121,7 @@ namespace CompetitorTool
             var item = хdoc.Root.Elements("item").Where(x => (string)x.Attribute("order") == search[0] && (string)x.Attribute("type") == search[1]).FirstOrDefault();
             var brend = item.FirstAttribute.Value;
 
-            textView2.SetText("Бренд: " + brend, TextView.BufferType.Normal);
-
+            textView2.SetText(Html.FromHtml("<b>Бренд:</b> " + brend), TextView.BufferType.Editable);
 
             tableLayout.RemoveAllViewsInLayout();
             tableLayout.RemoveAllViews();
@@ -141,12 +141,11 @@ namespace CompetitorTool
                 var isVacon = (brend == "Vacon" ? true : false);
 
                 txtView = new TextView(this);
-                txtView.Text = "Аналог марки VLT";
+                txtView.SetText(Html.FromHtml("<b>Аналог марки VLT</b>"), TextView.BufferType.Editable);
                 txtView.Gravity = GravityFlags.Left;
                 txtView.SetPadding(25, 25, 25, 25);
                 txtView.SetTextColor(Color.Black);
                 txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
-                txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                 var tableRow = new TableRow(this);
                 tableRow.AddView(txtView);
@@ -164,12 +163,11 @@ namespace CompetitorTool
                     txt += "</b> ";
 
                     txtView = new TextView(this);
-                    txtView.TextFormatted = Html.FromHtml(txt + (i == 0 && isVacon ? "Micro Drive" : codeData[i]));
+                    txtView.SetText(Html.FromHtml(txt + (i == 0 && isVacon ? "Micro Drive" : codeData[i])), TextView.BufferType.Editable);
                     txtView.SetBackgroundResource(Resource.Layout.finded);
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
                     txtView.SetTextColor(Color.Black);
-                    txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
 
                     tableRow = new TableRow(this);
                     tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);
@@ -188,12 +186,11 @@ namespace CompetitorTool
                     if (items != null && items.Count > 0)
                     {
                         txtView = new TextView(this);
-                        txtView.Text = "Аналог марки Vacon";
+                        txtView.SetText(Html.FromHtml("<b>Аналог марки Vacon</b>"), TextView.BufferType.Editable);
                         txtView.Gravity = GravityFlags.Left;
                         txtView.SetPadding(25, 50, 25, 25);
                         txtView.SetTextColor(Color.Black);
                         txtView.SetTextSize(Android.Util.ComplexUnitType.Dip, 20);
-                        txtView.SetTypeface(Typeface.Serif, TypefaceStyle.Bold);
 
                         tableRow = new TableRow(this);
                         tableRow.AddView(txtView);
@@ -240,11 +237,42 @@ namespace CompetitorTool
         private void BtnFromMain_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(MailForm));
-            intent.PutExtra("FindedData", "Hello");
+
+            var table = GetTableData();
+
+            intent.PutExtra("FindedData", table);
+           
             StartActivity(intent);
             OverridePendingTransition(Resource.Animation.slide_in_top, Resource.Animation.slide_out_bottom);
         }
 
+        private string GetTableData()
+        {
+            var table = new StringBuilder();
+            var layout = (TableLayout)FindViewById(Resource.Id.results1);
+
+            for (int i = 0; i < layout.ChildCount; i++)
+            {
+                View child = layout.GetChildAt(i);
+
+                if (child.GetType() == typeof(TableRow))
+                {
+                    TableRow row = (TableRow)child;
+
+                    for (int x = 0; x < row.ChildCount; x++)
+                    {
+                        View view = row.GetChildAt(x);
+                        if (view.GetType() == typeof(TextView))
+                        {
+                            table.Append(Html.ToHtml(((TextView)view).EditableText));
+                        }
+                    }
+                }
+            }
+            return table.ToString();
+        }
+            
+ 
         #endregion;
 
         private void drawItems(List<XElement> items, TableLayout tableLayout, TableRow tableRow) {
@@ -253,10 +281,9 @@ namespace CompetitorTool
             {
 
                 var codeData = new List<string>() {
-
                                 it.Attribute("series").Value,
                                 it.Attribute("order").Value,
-                                it.Attribute("type").Value//,
+                                it.Attribute("type").Value
                                 //it.Attribute("brend").Value
                             };
 
@@ -274,7 +301,7 @@ namespace CompetitorTool
                     txt += "</b> ";
 
                     txtView = new TextView(this);
-                    txtView.TextFormatted = Html.FromHtml(txt + codeData[i]);
+                    txtView.SetText(Html.FromHtml(txt + codeData[i]), TextView.BufferType.Editable);
                     txtView.SetBackgroundResource(Resource.Layout.finded);
                     txtView.Gravity = GravityFlags.Left;
                     txtView.SetPadding(25, 25, 25, 25);
@@ -289,11 +316,11 @@ namespace CompetitorTool
                 }
 
                 txtView = new TextView(this);
-                txtView.Text = "";
+                txtView.SetText(Html.FromHtml(""), TextView.BufferType.Editable);
                 txtView.Gravity = GravityFlags.Left;
                 txtView.SetPadding(25, 25, 25, 25);
                 txtView.SetTextColor(Color.Black);
-                txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+                //txtView.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
 
                 tableRow = new TableRow(this);
                 tableRow.LayoutParameters = new TableRow.LayoutParams(TableRow.LayoutParams.WrapContent, TableRow.LayoutParams.MatchParent);

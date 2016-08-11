@@ -102,18 +102,19 @@ namespace CompetitorTool
 
             var email = new Intent(Android.Content.Intent.ActionSend);
 
-            email.PutExtra(Android.Content.Intent.ExtraEmail, new string[] { "luckychel@gmail.com" }); //pe@danfoss.ru
+            email.PutExtra(Android.Content.Intent.ExtraEmail, new string[] { "pe@danfoss.ru" }); //
 
-            email.PutExtra(Android.Content.Intent.ExtraSubject, "Расчёт для " + editFIO.Text + (!string.IsNullOrEmpty(editOrganization.Text) ? " из " + editOrganization.Text : ""));
+            email.PutExtra(Android.Content.Intent.ExtraSubject, "Подбор для " + editFIO.Text + (!string.IsNullOrEmpty(editOrganization.Text) ? " из " + editOrganization.Text : "") + " (Competitor Tool на Android)");
 
             var tableData = Intent.GetStringExtra("FindedData");
 
             email.PutExtra(Android.Content.Intent.ExtraText,
                 Html.FromHtml(new StringBuilder()
-                    .Append("<p><b>Email:</b> " + editEmail.Text + "</p>")
-                    .Append("<p><b>Телефон:</b> " + editPhone.Text + "</p>")
-                    .Append("<p><b>Комментарий:</b> " + editComment.Text + "</p>")
-                    .Append("<p><b>Результат подбора:</b> " + "" + "</p>")
+                    .Append(!string.IsNullOrEmpty(editEmail.Text) ? "<strong>Email:</strong> " + editEmail.Text + "<br />" : "")
+                    .Append(!string.IsNullOrEmpty(editPhone.Text) ? "<strong>Телефон:</strong> " + editPhone.Text + "<br />" : "")
+                    .Append(!string.IsNullOrEmpty(editComment.Text) ? "<strong>Комментарий:</strong> " + editComment.Text + "<br />" : "")
+                    .Append("<br /><strong>Результат подбора:</strong>")
+                    .Append(tableData)
                     .ToString())
             );
 

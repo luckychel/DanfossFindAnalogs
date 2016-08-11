@@ -95,6 +95,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSend"
             android:drawableRight="@drawable/send_email"
-            android:paddingRight="10dp" />
+            android:background="@drawable/buttonSendRequest"
+            android:paddingRight="10dp"
+            android:textColor="#fff" />
     </LinearLayout>
 </LinearLayout>
