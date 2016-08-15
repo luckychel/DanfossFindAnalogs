@@ -100,15 +100,15 @@ namespace CompetitorTool
                 return;
             }
 
-            var email = new Intent(Android.Content.Intent.ActionSend);
+            var email = new Intent(Intent.ActionSend);
 
-            email.PutExtra(Android.Content.Intent.ExtraEmail, new string[] { "pe@danfoss.ru" }); //
+            email.PutExtra(Intent.ExtraEmail, new string[] { "pe@danfoss.ru" }); //
 
-            email.PutExtra(Android.Content.Intent.ExtraSubject, "Подбор для " + editFIO.Text + (!string.IsNullOrEmpty(editOrganization.Text) ? " из " + editOrganization.Text : "") + " (Competitor Tool на Android)");
+            email.PutExtra(Intent.ExtraSubject, "Подбор для " + editFIO.Text + (!string.IsNullOrEmpty(editOrganization.Text) ? " из " + editOrganization.Text : "") + " (Competitor Tool на Android)");
 
             var tableData = Intent.GetStringExtra("FindedData");
 
-            email.PutExtra(Android.Content.Intent.ExtraText,
+            email.PutExtra(Intent.ExtraText,
                 Html.FromHtml(new StringBuilder()
                     .Append(!string.IsNullOrEmpty(editEmail.Text) ? "<strong>Email:</strong> " + editEmail.Text + "<br />" : "")
                     .Append(!string.IsNullOrEmpty(editPhone.Text) ? "<strong>Телефон:</strong> " + editPhone.Text + "<br />" : "")
