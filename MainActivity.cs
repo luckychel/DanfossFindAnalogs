@@ -15,12 +15,8 @@ using System.Xml.Linq;
 
 namespace CompetitorTool
 {
-
     [Activity(
-            MainLauncher = true
-            , Label = "Competitor Tool"
-            , Theme = "@style/MyCustomTheme"
-            , Icon = "@drawable/Icon"
+             Theme = "@style/MyCustomTheme"
             , ConfigurationChanges = (Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)
             
     )]

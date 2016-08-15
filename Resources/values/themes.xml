@@ -1,5 +1,8 @@
 ﻿<resources>
-
+  <style name="SplashScreen" parent="@android:style/Theme.Material.Light">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
   
   <style name="MyCustomTheme" parent="@android:style/Theme.Material.Light">
     <item name="android:actionBarStyle">@style/MyActionBarTheme</item>

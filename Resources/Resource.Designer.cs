@@ -81,6 +81,12 @@ namespace CompetitorTool
 			// aapt resource value: 0x7f020005
 			public const int send_email = 2130837509;
 			
+			// aapt resource value: 0x7f020006
+			public const int splash = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int splash_screen = 2130837511;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -207,11 +213,14 @@ namespace CompetitorTool
 		public partial class Style
 		{
 			
+			// aapt resource value: 0x7f060002
+			public const int MyActionBarTheme = 2131099650;
+			
 			// aapt resource value: 0x7f060001
-			public const int MyActionBarTheme = 2131099649;
+			public const int MyCustomTheme = 2131099649;
 			
 			// aapt resource value: 0x7f060000
-			public const int MyCustomTheme = 2131099648;
+			public const int SplashScreen = 2131099648;
 			
 			static Style()
 			{
